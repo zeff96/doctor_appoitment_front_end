@@ -11,7 +11,7 @@ function Greeting() {
 
   return (
     <div>
-      <h1>{doctors.message}</h1>
+      <h1>{doctors.name}</h1>
     </div>
   );
 }
