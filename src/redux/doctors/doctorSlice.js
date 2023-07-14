@@ -29,10 +29,21 @@ const doctorsSlice = createSlice({
     builder.addCase(fechDoctors.pending, (state) => {
       state.status = 'Loading';
     });
-    builder.addCase(fechDoctors.fulfilled, (state, action) => {
-      state.status = 'succeded';
-      state.doctorsstore = state.doctorsstore.concat(action.payload);
-    });
+    // builder.addCase(fechDoctors.fulfilled, (state, action) => {
+    //   state.status = 'succeded';
+    //   state.doctors = state.doctors.concat(action.payload.map);
+    // });
+
+    builder.addCase(fechDoctors.fulfilled, (state, action) => ({
+      ...state,
+      doctors: action.payload.map((fechDoctors) => ({
+        name: fechDoctors.name,
+        bio: fechDoctors.bio,
+        image_url: fechDoctors.image_url,
+      })),
+      status: 'loading',
+    }));
+
     builder.addCase(fechDoctors.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;

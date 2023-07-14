@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 
 function Greeting() {
-  const doctors = useSelector((state) => state.greeting.doctorsstore);
+  const doctors = useSelector((state) => state.doctors.doctors);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fechDoctors());
@@ -11,7 +11,10 @@ function Greeting() {
 
   return (
     <div>
-      <h1>{doctors.name}</h1>
+      <h1>
+        {' '}
+        {doctors.image_url}
+      </h1>
     </div>
   );
 }
