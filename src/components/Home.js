@@ -1,7 +1,19 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fechDoctors } from '../redux/doctors/doctorSlice';
 
-const Home = () => (
-  <div>Home page</div>
-);
+function Greeting() {
+  const doctors = useSelector((state) => state.greeting.doctorsstore);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fechDoctors());
+  }, [dispatch]);
 
-export default Home;
+  return (
+    <div>
+      <h1>{doctors.message}</h1>
+    </div>
+  );
+}
+
+export default Greeting;
