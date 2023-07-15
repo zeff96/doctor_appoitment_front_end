@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
+import '../css/Home.css';
 
-function Greeting() {
-  const doctors = useSelector((state) => state.doctors);
+function Home() {
+  const doctors = useSelector((state) => state.doctors.doctors); // Update the selector
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fechDoctors());
@@ -16,7 +17,7 @@ function Greeting() {
           <li key={doctor.id} className="doctors-list">
             <div className="doctors-card">
               <div className="circle-color">
-                <img src={doctor.image_url} alt={doctor.name} className="doctors-image" />
+                <img src={doctor.image_url} alt={doctor.name} className="rounded-circle w-50 h-20 blob" width="2" />
               </div>
               <div className="doctors-card-details">
                 <h5>{doctor.name}</h5>
@@ -33,4 +34,4 @@ function Greeting() {
   );
 }
 
-export default Greeting;
+export default Home;
