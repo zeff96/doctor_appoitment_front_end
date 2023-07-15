@@ -1,0 +1,5 @@
+.doctors-container {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
