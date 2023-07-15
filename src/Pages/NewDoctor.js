@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 function NewDoctor() {
   return (
     <div>NewDoctor</div>
-  )
+  );
 }
 
-export default NewDoctor
+export default NewDoctor;
