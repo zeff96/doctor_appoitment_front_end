@@ -2,12 +2,16 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Layout = () => (
-  <div className="">
-    <div className="">
-      <h1 className="">Doctor appointment</h1>
-      <Navbar />
+  <div className="container">
+    <div className="row">
+      <div className="col-3">
+        <h1 className="">Doctor appointment</h1>
+        <Navbar />
+      </div>
+      <div className="col-9">
+        <Outlet />
+      </div>
     </div>
-    <Outlet />
   </div>
 );
 
