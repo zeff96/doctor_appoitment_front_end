@@ -38,7 +38,7 @@ const doctorsSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     });
-    // create a new studio
+    // create a new Doctors
     builder.addCase(createDoctor.pending, (state) => ({
       ...state,
       status: 'loading',
