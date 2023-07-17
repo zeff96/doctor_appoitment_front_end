@@ -14,6 +14,11 @@ export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
   return response.data;
 });
 
+export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) => {
+  const response = await Axios.get(`${BASE_URL}/${id}`);
+  return response.data;
+});
+
 const doctorsSlice = createSlice({
   name: 'doctors',
   initialState,
@@ -29,8 +34,20 @@ const doctorsSlice = createSlice({
     builder.addCase(fechDoctors.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
+    }); // ---------------------------------------//
+    builder.addCase(showDoctors.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(showDoctors.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.doctors = action.payload;
+    });
+    builder.addCase(showDoctors.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
     });
   },
 });
 
+export const { selectDoctor } = doctorsSlice.actions;
 export default doctorsSlice.reducer;
