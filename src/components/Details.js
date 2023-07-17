@@ -1,7 +1,7 @@
 import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { showDoctors, selectDoctor } from '../redux/doctors/doctorSlice';
+import { showDoctors } from '../redux/doctors/doctorSlice';
 
 const Details = () => {
   const doctors = useSelector((state) => state.doctors.doctors);
@@ -55,7 +55,6 @@ const Details = () => {
           type="button"
           onClick={() => {
             navigate('appointment');
-            dispatch(selectDoctor(id));
           }}
         >
           appointment

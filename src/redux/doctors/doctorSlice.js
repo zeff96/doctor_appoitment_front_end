@@ -22,12 +22,7 @@ export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) =>
 const doctorsSlice = createSlice({
   name: 'doctors',
   initialState,
-  reducers: {
-    selectDoctor: (state, action) => ({
-      ...state,
-      selected: action.payload,
-    }),
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fechDoctors.pending, (state) => {
       state.status = 'loading';
