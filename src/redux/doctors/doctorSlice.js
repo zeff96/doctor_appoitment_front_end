@@ -42,12 +42,12 @@ const doctorsSlice = createSlice({
     builder.addCase(createDoctor.pending, (state) => ({
       ...state,
       status: 'loading',
-      isSuccessfull: false,
     }));
     builder.addCase(createDoctor.fulfilled, (state) => ({
       ...state,
       status: 'successful',
-      isSuccessfull: true,
+      doctors: state.doctors.concat(action.payload),
+
     }));
     builder.addCase(createDoctor.rejected, (state, action) => ({
       ...state,
