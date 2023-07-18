@@ -6,8 +6,20 @@ function RegistrationForm() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const implementform = (e) => {
+    e.preventDefault();
+
+    // const data = {
+    //   name: document.getElementById('name'),
+    //   email: document.getElementById('email'),
+    //   confirmPassword: document.getElementById('confirmPassword'),
+    // };
+
+    // dispatch(createForm(data));
+  };
+
   return (
-    <form onSubmit>
+    <form onSubmit={implementform}>
       <div>
         <label htmlFor="name">
           Name:
