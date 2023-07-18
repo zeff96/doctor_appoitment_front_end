@@ -6,6 +6,7 @@ const links = [
   { path: 'reservations', text: 'My reservations' },
   { path: 'doctors/new', text: 'Add doctor' },
   { path: 'doctors/delete', text: 'Delete doctor' },
+  { path: 'register', text: 'Register' },
 ];
 
 const Navbar = () => (
