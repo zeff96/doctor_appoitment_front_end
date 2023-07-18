@@ -21,19 +21,18 @@ function NewDoctor() {
     const data = {
       name: document.getElementById('name'),
       image: document.getElementById('image_url'),
-      address: document.getElementById('address'),
       facebook: document.getElementById('facebook'),
       bio: document.getElementById('bio'),
       city: document.getElementById('city'),
       state: document.getElementById('state'),
       zipcode: document.getElementById('zipcode'),
-      amount:  document.getElementById('amount'),
-      instagram:  document.getElementById('instagram'),
-      twitter :  document.getElementById('twitter'),
-      address : document.getElementById('address'),
+      amount: document.getElementById('amount'),
+      instagram: document.getElementById('instagram'),
+      twitter: document.getElementById('twitter'),
+      address: document.getElementById('address'),
     };
 
-    dispatch(createDoctor(data))
+    dispatch(createDoctor(data));
   };
 
   return (

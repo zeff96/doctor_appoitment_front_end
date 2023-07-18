@@ -59,7 +59,7 @@ const doctorsSlice = createSlice({
       ...state,
       status: 'loading',
     }));
-    builder.addCase(createDoctor.fulfilled, (state) => ({
+    builder.addCase(createDoctor.fulfilled, (state, action) => ({
       ...state,
       status: 'successful',
       doctors: state.doctors.concat(action.payload),

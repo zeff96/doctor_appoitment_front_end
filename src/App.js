@@ -12,11 +12,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-      add-doctor
+        add-doctor
         <Route path="/doctors/new" element={<NewDoctor />} />
 
         <Route path=":id" element={<Details />} />
-     dev
+        dev
         {/* <Route path="reservations" element={<Reservations />} /> */}
       </Route>
     </Routes>
