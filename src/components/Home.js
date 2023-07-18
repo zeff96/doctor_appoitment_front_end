@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import '../css/Home.css';
 
 function Home() {
+  const navigate = useNavigate();
   const doctors = useSelector((state) => state.doctors.doctors); // Update the selector
   const dispatch = useDispatch();
   useEffect(() => {
@@ -15,7 +17,13 @@ function Home() {
       <ul className="doctors-container">
         {doctors.map((doctor) => (
           <li key={doctor.id} className="doctors-list">
-            <div className="doctors-card">
+            <button
+              className="doctors-card"
+              type="button"
+              onClick={() => {
+                navigate(`${doctor.id}`);
+              }}
+            >
               <div className="circle-color">
                 <img src={doctor.image_url} alt={doctor.name} className="rounded-circle w-50 h-20 blob" width="2" />
               </div>
@@ -26,7 +34,7 @@ function Home() {
                   {doctor.bio}
                 </p>
               </div>
-            </div>
+            </button>
           </li>
         ))}
       </ul>
