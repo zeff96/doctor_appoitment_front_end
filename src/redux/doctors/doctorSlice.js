@@ -9,6 +9,14 @@ const initialState = {
   error: null,
 };
 
+// create a new doctors
+
+export const createDoctor = createAsyncThunk('doctors/createDoctor', async (data) => {
+  const response = await Axios.post(`${BASE_URL}/doctors`, data);
+  return response.data;
+});
+
+// fetch doctors
 export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
   const response = await Axios.get(BASE_URL);
   return response.data;
@@ -46,6 +54,23 @@ const doctorsSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     });
+    // create a new Doctors
+    builder.addCase(createDoctor.pending, (state) => ({
+      ...state,
+      status: 'loading',
+    }));
+    builder.addCase(createDoctor.fulfilled, (state, action) => ({
+      ...state,
+      status: 'successful',
+      doctors: state.doctors.concat(action.payload),
+
+    }));
+    builder.addCase(createDoctor.rejected, (state, action) => ({
+      ...state,
+      status: 'failed',
+      error: action.error.message,
+      isSuccessfull: false,
+    }));
   },
 });
 
