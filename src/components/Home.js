@@ -14,8 +14,6 @@ function Home() {
 
   return (
 
-    
-
     <div>
       <ul className="doctors-container">
         {doctors.map((doctor) => (
