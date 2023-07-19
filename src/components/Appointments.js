@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { fetchAppointments } from '../redux/doctors/doctorSlice';
 
 function Appointments() {
-  const navigate = useNavigate();
   const appointments = useSelector((state) => state.doctors.appointments); // Update the selector
   const dispatch = useDispatch();
   useEffect(() => {
