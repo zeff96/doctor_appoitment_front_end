@@ -1,41 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-import logoImg from '../images/logo.png';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useRef } from 'react';
+import { loginAsync } from '../redux/users/userSlice';
 
-function LoginPage() {
-//   const dispatch = useDispatch();
-  const [inputPassword, setInputPassword] = useState('');
-  const [email, setEmail] = useState('');
+function LoginForm() {
+  const formRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogin = {
+  function handleSubmit(e) {
+    e.preventDefault();
 
-  };
+    const formData = new FormData(formRef.current);
+    const form = Object.fromEntries(formData);
+    const data = {
+      user: { email: form.email, password: form.password },
+    };
+
+    dispatch(loginAsync(data).then((result) => {
+      if (result.payload === undefined) return;
+      navigate('/doctors');
+    }));
+    e.target.reset();
+  }
 
   return (
-    <div className="login_body">
-      <main className="login_main">
-        <figure className="log_fig">
-          <Link to="/">
-            <img alt="img" src={logoImg} />
-          </Link>
-        </figure>
-      </main>
-
-      <form action="" className="login_form">
-        <fieldset className="fieldset_border_none">
-          <input className="input_name" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input className="input_password" type={inputPassword} value={inputPassword} onChange={(e) => setInputPassword(e.target.value)} required />
-        </fieldset>
-
-        <fieldset className="fieldset_border_none login_action">
-          <button type="button" onClick={handleLogin}>Submit</button>
-        </fieldset>
-
+    <div>
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <input type="email" name="email" id="email" required placeholder="email" className="form-control mb-3" />
+        <input type="password" name="password" id="password" required placeholder="password" className="form-control mb-3" />
+        <input type="submit" value="Log in" className="btn btn-primary" />
       </form>
-
+      <div>
+        Not a user?
+        <NavLink to="/signup">Sign up</NavLink>
+      </div>
     </div>
   );
 }
 
-export default LoginPage;
+export default LoginForm;
