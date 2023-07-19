@@ -4,7 +4,8 @@ import './App.css';
 import Layout from './components/Layout';
 import Home from './components/Home';
 import Details from './components/Details';
-// import Reservations from './components/Reservations';
+import AppointmentForm from './components/NewAppointment';
+import Appointments from './components/Appointments';
 import NewDoctor from './Pages/NewDoctor';
 
 function App() {
@@ -12,12 +13,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        add-doctor
         <Route path="/doctors/new" element={<NewDoctor />} />
-
-        <Route path=":id" element={<Details />} />
-        dev
-        {/* <Route path="reservations" element={<Reservations />} /> */}
+        <Route path="/doctors/:id" element={<Details />} />
+        <Route path="/appointment/new" element={<AppointmentForm />} />
+        <Route path="/appointments" element={<Appointments />} />
       </Route>
     </Routes>
   );
