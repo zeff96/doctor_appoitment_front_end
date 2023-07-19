@@ -13,7 +13,7 @@ function Appointments() {
     <div>
       <ul className="appointments-container">
         {appointments.map((appointment) => (
-          <li key={appointments.id} className="appointments-list">
+          <li key={appointment.id} className="appointments-list">
             <div className="appointments-card">
               <div className="appointments-card-details">
                 <h5>{appointment.doctor}</h5>

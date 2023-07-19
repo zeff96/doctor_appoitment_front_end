@@ -6,7 +6,7 @@ const BASE_URL = 'http://127.0.0.1:3000/doctors';
 const initialState = {
   doctors: [],
   details: [],
-  appointment: [],
+  appointments: [],
   status: 'idle',
   error: null,
 };
@@ -104,7 +104,7 @@ const doctorsSlice = createSlice({
       error: action.error.message,
       isSuccessfull: false,
     }));
-    // Fetch doctor details data //
+    // Fetch Appointments data //
     builder.addCase(fetchAppointments.pending, (state) => {
       state.status = 'loading';
     });
