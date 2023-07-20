@@ -3,12 +3,12 @@ import './App.css';
 // import { useEffect, useState } from 'react';
 // import LoginForm from './components/LoginPage';
 import SplashPage from './components/SplashPage';
-//import ProtectedRoute from './components/ProtectedRoute';
+// import ProtectedRoute from './components/ProtectedRoute';
 // import Layout from './components/Layout';
 import Home from './components/Home';
 import Details from './components/Details';
 // import Reservations from './components/Reservations';
-import NewDoctor from './Pages/NewDoctor';
+// import NewDoctor from './Pages/NewDoctor';
 import RegistrationForm from './components/RegistrationForm';
 import LoginPage from './components/LoginPage';
 
