@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useRef } from 'react';
 import { loginAsync } from '../redux/users/userSlice';
 
-function LoginForm() {
+function LoginPage() {
   const formRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,4 +39,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default LoginPage;
