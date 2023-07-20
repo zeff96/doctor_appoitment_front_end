@@ -5,6 +5,8 @@ const BASE_URL = 'http://127.0.0.1:3000/doctors';
 
 const initialState = {
   doctors: [],
+  details: [],
+  appointments: [],
   status: 'idle',
   error: null,
 };
@@ -22,8 +24,21 @@ export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
   return response.data;
 });
 
+// fetch doctors details
 export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) => {
   const response = await Axios.get(`${BASE_URL}/${id}`);
+  return response.data;
+});
+
+// Add Appointment
+export const createAppointment = createAsyncThunk('doctors/createAppointment', async (id, data) => {
+  const response = await Axios.post(`${BASE_URL}/doctors/${1}/appointments`, data);
+  return response.data;
+});
+
+// fetch appointment
+export const fetchAppointments = createAsyncThunk('doctors/fetchAppointments', async (id) => {
+  const response = await Axios.get(`${BASE_URL}/doctors/${id}/appointments`);
   return response.data;
 });
 
@@ -42,13 +57,14 @@ const doctorsSlice = createSlice({
     builder.addCase(fechDoctors.rejected, (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
-    }); // ---------------------------------------//
+    });
+    // Fetch doctor details data //
     builder.addCase(showDoctors.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(showDoctors.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      state.doctors = action.payload;
+      state.details = action.payload;
     });
     builder.addCase(showDoctors.rejected, (state, action) => {
       state.status = 'failed';
@@ -71,8 +87,36 @@ const doctorsSlice = createSlice({
       error: action.error.message,
       isSuccessfull: false,
     }));
+    // create a appointment //
+    builder.addCase(createAppointment.pending, (state) => ({
+      ...state,
+      status: 'loading',
+    }));
+    builder.addCase(createAppointment.fulfilled, (state, action) => ({
+      ...state,
+      status: 'successful',
+      appointment: state.appointments.concat(action.payload),
+
+    }));
+    builder.addCase(createAppointment.rejected, (state, action) => ({
+      ...state,
+      status: 'failed',
+      error: action.error.message,
+      isSuccessfull: false,
+    }));
+    // Fetch Appointments data //
+    builder.addCase(fetchAppointments.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(fetchAppointments.fulfilled, (state, action) => {
+      state.status = 'succeeded';
+      state.appointments = action.payload;
+    });
+    builder.addCase(fetchAppointments.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    });
   },
 });
 
-export const { selectDoctor } = doctorsSlice.actions;
 export default doctorsSlice.reducer;
