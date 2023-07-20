@@ -6,13 +6,14 @@ import '../css/Home.css';
 
 function Home() {
   const navigate = useNavigate();
-  const doctors = useSelector((state) => state.doctors.doctors); // Update the selector
+  const doctors = useSelector((state) => state.doctors.doctors);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fechDoctors());
   }, [dispatch]);
 
   return (
+
     <div>
       <ul className="doctors-container">
         {doctors.map((doctor) => (

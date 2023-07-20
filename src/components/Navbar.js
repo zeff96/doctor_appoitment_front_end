@@ -8,6 +8,7 @@ const links = [
   { path: 'appointments', text: 'My appointments' },
   { path: 'doctors/new', text: 'Add doctor' },
   { path: 'doctors/delete', text: 'Delete doctor' },
+  { path: 'register', text: 'Register' },
 ];
 
 const Navbar = () => (
