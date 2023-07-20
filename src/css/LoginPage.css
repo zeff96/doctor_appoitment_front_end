@@ -1,9 +1,23 @@
 .form-container {
- flex-direction: column;
- margin-left: 2000px;
+  flex-direction: column;
+  margin-top: 2000px;
 }
 
 .div-container {
   display: flex;
+  position: relative;
+}
+
+.navLink {
 
 }
+
+/* .image-wrapper img {
+  width: 700px;
+  border-radius: 20px;
+} */
+
+/* .form-handle input {
+  display: flex;
+}
+*/

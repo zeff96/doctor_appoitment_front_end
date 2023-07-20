@@ -31,6 +31,7 @@ function RegistrationForm() {
         <label htmlFor="name">
           Name:
           <input
+            className="form-control form-control-lg"
             type="text"
             name="name"
             id="name"
@@ -42,6 +43,7 @@ function RegistrationForm() {
         <label htmlFor="email">
           Email:
           <input
+            className="form-control form-control-lg"
             type="email"
             name="email"
             id="email"
@@ -53,6 +55,7 @@ function RegistrationForm() {
         <label htmlFor="password">
           password:
           <input
+            className="form-control form-control-lg"
             type="password"
             name="password"
             id="password"
@@ -64,6 +67,7 @@ function RegistrationForm() {
         <label htmlFor="confirmPassword">
           password:
           <input
+            className="form-control form-control-lg"
             type="password"
             name="password_confirmation"
             id="password_confirmation"
@@ -71,7 +75,7 @@ function RegistrationForm() {
         </label>
       </div>
 
-      <button type="submit">Submit</button>
+      <button className="btn btn-primary" type="submit">Submit</button>
     </form>
   );
 }

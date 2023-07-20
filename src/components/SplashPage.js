@@ -3,7 +3,7 @@ import LoginPage from './LoginPage';
 function SplashPage() {
   return (
     <div>
-      <h2>Welcome to Our App</h2>
+      <h2>Doctor appointment App</h2>
       <LoginPage />
     </div>
   );
