@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
+import { BrowserRouter as Routes, Route } from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
-import LoginForm from './components/LoginPage';
+// import LoginForm from './components/LoginPage';
 import SplashPage from './components/SplashPage';
 import ProtectedRoute from './components/ProtectedRoute';
-import Layout from './components/Layout';
+// import Layout from './components/Layout';
 import Home from './components/Home';
 import Details from './components/Details';
 // import Reservations from './components/Reservations';
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     setToken(isAuthenticated);
-  },[isAuthenticated])
+  }, [isAuthenticated]);
 
   return (
     <Routes>
@@ -27,6 +27,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/doctors/new" element={<NewDoctor />} />
         <Route path=":id" element={<Details />} />
+        <Route element={<ProtectedRoute token={token} />} />
         {/* <Route path="reservations" element={<Reservations />} /> */}
         <Route path="/register" element={<RegistrationForm />} />
       </Route>
