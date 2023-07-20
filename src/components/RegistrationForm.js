@@ -1,32 +1,39 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { signUpAsync } from '../redux/users/userSlice';
 
 function RegistrationForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const formRef = useRef();
+  const dispatch = useDispatch();
 
   const implementform = (e) => {
     e.preventDefault();
 
-    // const data = {
-    //   name: document.getElementById('name'),
-    //   email: document.getElementById('email'),
-    //   confirmPassword: document.getElementById('confirmPassword'),
-    // };
+    const formData = new FormData(formRef.current);
 
-    // dispatch(createForm(data));
+    const form = Object.fromEntries(formData);
+
+    const data = {
+      user: {
+        name: form.name,
+        email: form.email,
+        password: form.password,
+        password_confirmation: form.password_confirmation,
+      },
+    };
+
+    dispatch(signUpAsync(data));
   };
 
   return (
-    <form onSubmit={implementform}>
+    <form ref={formRef} onSubmit={implementform}>
       <div>
         <label htmlFor="name">
           Name:
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            id="name"
           />
         </label>
       </div>
@@ -36,9 +43,8 @@ function RegistrationForm() {
           Email:
           <input
             type="email"
+            name="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
       </div>
@@ -48,9 +54,8 @@ function RegistrationForm() {
           password:
           <input
             type="password"
+            name="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
       </div>
@@ -60,9 +65,8 @@ function RegistrationForm() {
           password:
           <input
             type="password"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            name="password_confirmation"
+            id="password_confirmation"
           />
         </label>
       </div>
