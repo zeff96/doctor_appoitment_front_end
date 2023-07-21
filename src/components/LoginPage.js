@@ -33,9 +33,9 @@ function LoginPage() {
       </div>
       <form ref={formRef} onSubmit={handleSubmit} className="">
         <input type="email" name="email" id="email" required placeholder="email" className="form-control form-control-lg" />
-
+        <br />
         <input type="password" name="password" id="password" required placeholder="password" className="form-control form-control-lg" />
-
+        <br />
         <input type="submit" value="Log in" className="btn btn-primary" />
         <br />
       </form>
