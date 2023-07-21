@@ -2,6 +2,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useRef } from 'react';
 import { loginAsync } from '../redux/users/userSlice';
+import '../css/LoginPage.css';
+import doctors from '../images/doctorApp.jpg';
 
 function LoginPage() {
   const formRef = useRef();
@@ -17,23 +19,29 @@ function LoginPage() {
       user: { email: form.email, password: form.password },
     };
 
-    dispatch(loginAsync(data).then((result) => {
+    dispatch(loginAsync(data)).then((result) => {
       if (result.payload === undefined) return;
       navigate('/doctors');
-    }));
+    });
     e.target.reset();
   }
 
   return (
-    <div>
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <input type="email" name="email" id="email" required placeholder="email" className="form-control mb-3" />
-        <input type="password" name="password" id="password" required placeholder="password" className="form-control mb-3" />
+    <div className="div-container">
+      <div className="image-wrapper">
+        <img src={doctors} className="img-thumbnail" alt="img" />
+      </div>
+      <form ref={formRef} onSubmit={handleSubmit} className="">
+        <input type="email" name="email" id="email" required placeholder="email" className="form-control form-control-lg" />
+
+        <input type="password" name="password" id="password" required placeholder="password" className="form-control form-control-lg" />
+
         <input type="submit" value="Log in" className="btn btn-primary" />
+        <br />
       </form>
-      <div>
+      <div className="navLink">
         Not a user?
-        <NavLink to="/signup">Sign up</NavLink>
+        <NavLink to="/signup" className="btn btn-primary">Sign up</NavLink>
       </div>
     </div>
   );

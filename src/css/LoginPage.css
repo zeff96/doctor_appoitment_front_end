@@ -1,0 +1,28 @@
+.form-container {
+  flex-direction: column;
+  margin-top: 2000px;
+}
+
+.div-container {
+  display: flex;
+  position: relative;
+}
+
+.navLink {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* .image-wrapper img {
+  width: 700px;
+  border-radius: 20px;
+} */
+
+/* .form-handle input {
+  display: flex;
+}
+*/
