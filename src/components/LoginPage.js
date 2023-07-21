@@ -21,7 +21,7 @@ function LoginPage() {
 
     dispatch(loginAsync(data)).then((result) => {
       if (result.payload === undefined) return;
-      navigate('/doctors');
+      navigate('/home');
     });
     e.target.reset();
   }

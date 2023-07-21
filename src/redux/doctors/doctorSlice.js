@@ -20,7 +20,12 @@ export const createDoctor = createAsyncThunk('doctors/createDoctor', async (data
 
 // fetch doctors
 export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
-  const response = await Axios.get(BASE_URL);
+  const response = await Axios.get(BASE_URL, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
   return response.data;
 });
 

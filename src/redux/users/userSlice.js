@@ -17,7 +17,8 @@ export const signUpAsync = createAsyncThunk(
         Accept: 'application/json',
       },
     });
-    localStorage.setItem('token', res.headers.get('Authorization'));
+    const { token } = res.data;
+    document.cookie = `jwt=${token}; path=/`;
     return res.data;
   },
 );
@@ -31,7 +32,8 @@ export const loginAsync = createAsyncThunk(
         Accept: 'application/json',
       },
     });
-    localStorage.setItem('token', res.headers.get('Authorization'));
+    const { token } = res.data;
+    document.cookie = `jwt=${token}; path=/`;
     return res.data;
   },
 );

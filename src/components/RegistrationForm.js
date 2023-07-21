@@ -24,6 +24,7 @@ function RegistrationForm() {
     };
 
     dispatch(signUpAsync(data));
+    e.target.reset();
   };
 
   return (
