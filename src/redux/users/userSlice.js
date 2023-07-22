@@ -41,12 +41,9 @@ export const loginAsync = createAsyncThunk(
       Cookies.set('jwt_token', token, { expires: expirationTimeInMinutes });
       return res.data;
     } catch (error) {
-      // Check if the error response contains a custom error message
       if (error.response && error.response.data && error.response.data.status.message) {
-        // Dispatch the custom error message to the state
         throw new Error(error.response.data.status.message);
       } else {
-        // If no custom message, dispatch a generic error
         throw new Error('An unknown error occurred.');
       }
     }
