@@ -1,42 +1,20 @@
 /* eslint-disable */
-import { Route, Navigate } from 'react-router';
+import React from 'react';
+import { Outlet, Navigate } from 'react-router';
 import PropTypes from 'prop-types';
-import jwtDecode from 'jwt-decode';
 
-const isLoggedIn = () => {
-  const token = document.cookie
-    .split(';')
-    .map((cookie) => cookie.trim())
-    .find((cookie) => cookie.startsWith('jwt='));
 
-  // Check if the token exists and is not expired
-  if (token) {
-    const jwtToken = token.split('=')[1];
-    // Decode the JWT token (assuming you have a utility function for decoding)
-    const decodedToken = jwtDecode(jwtToken);
-
-    // Check if the token is not expired
-    if (decodedToken && decodedToken.exp * 1000 > Date.now()) {
-      return true;
-    }
+const ProtectedRoute = ({ token, redirectPath = '/login', children }) => {
+  if (!token) {
+    return <Navigate to={redirectPath} replace />;
+  } else {
+    return children || <Outlet />;
   }
-
-  return false;
 };
 
-const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => (isLoggedIn() ? (
-      <Component {...props} />
-    ) : (
-      <Navigate to="/login" replace />
-    ))}
-  />
-);
-
 ProtectedRoute.propTypes = {
-  redirectPath: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  token: PropTypes.string,
+  redirectPath: PropTypes.string,
+  children: PropTypes.node.isRequired,
 };
 export default ProtectedRoute;

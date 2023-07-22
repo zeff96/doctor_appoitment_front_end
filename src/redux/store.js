@@ -1,12 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import doctorsReducer from './doctors/doctorSlice';
 import userReducer from './users/userSlice';
 
-const store = configureStore({
-  reducer: {
-    doctors: doctorsReducer,
-    user: userReducer,
-  },
+const rootReducer = combineReducers({
+  doctors: doctorsReducer,
+  user: userReducer,
 });
 
-export default store;
+const setupStore = (preloadedState) => configureStore({
+  reducer: rootReducer,
+  preloadedState,
+});
+export default setupStore;

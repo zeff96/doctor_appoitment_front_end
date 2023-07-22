@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { loginAsync } from '../redux/users/userSlice';
 import '../css/LoginPage.css';
@@ -9,6 +9,7 @@ function LoginPage() {
   const formRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const error = useSelector((state) => state.user.error);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,8 +21,7 @@ function LoginPage() {
     };
 
     dispatch(loginAsync(data)).then((result) => {
-      if (result.payload === undefined) return;
-      navigate('/home');
+      if (!result.error) navigate('/home');
     });
     e.target.reset();
   }
@@ -38,6 +38,7 @@ function LoginPage() {
         <br />
         <input type="submit" value="Log in" className="btn btn-primary" />
         <br />
+        {error && <p>{error}</p>}
       </form>
       <div className="navLink">
         Not a user?

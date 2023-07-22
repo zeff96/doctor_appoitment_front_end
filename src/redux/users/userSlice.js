@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const initialState = {
   userData: null,
   isAuthenticated: false,
+  error: null,
 };
 
 const url = ' http://localhost:3000';
@@ -17,8 +19,9 @@ export const signUpAsync = createAsyncThunk(
         Accept: 'application/json',
       },
     });
-    const { token } = res.data;
-    document.cookie = `jwt=${token}; path=/`;
+    const token = res.headers.get('Authorization');
+    const expirationTimeInMinutes = 10;
+    Cookies.set('jwt_token', token, { expires: expirationTimeInMinutes });
     return res.data;
   },
 );
@@ -26,15 +29,27 @@ export const signUpAsync = createAsyncThunk(
 export const loginAsync = createAsyncThunk(
   'login/Async',
   async (formData) => {
-    const res = await axios.post(`${url}/login`, formData, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    });
-    const { token } = res.data;
-    document.cookie = `jwt=${token}; path=/`;
-    return res.data;
+    try {
+      const res = await axios.post(`${url}/login`, formData, {
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      });
+      const token = res.headers.get('Authorization');
+      const expirationTimeInMinutes = 10;
+      Cookies.set('jwt_token', token, { expires: expirationTimeInMinutes });
+      return res.data;
+    } catch (error) {
+      // Check if the error response contains a custom error message
+      if (error.response && error.response.data && error.response.data.status.message) {
+        // Dispatch the custom error message to the state
+        throw new Error(error.response.data.status.message);
+      } else {
+        // If no custom message, dispatch a generic error
+        throw new Error('An unknown error occurred.');
+      }
+    }
   },
 );
 
@@ -44,10 +59,10 @@ export const logoutAsync = createAsyncThunk(
     const res = await axios.delete(`${url}/logout`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('token'),
+        Authorization: Cookies.get('jwt_token'),
       },
     });
-    localStorage.removeItem('token');
+    Cookies.remove('jwt_token');
     return res.data;
   },
 );
@@ -63,6 +78,10 @@ const userSlice = createSlice({
       ...state,
       userData: action.payload,
       isAuthenticated: true,
+    })).addCase(loginAsync.rejected, (state, action) => ({
+      ...state,
+      isAuthenticated: false,
+      error: action.error.message,
     })).addCase(logoutAsync.fulfilled, (state) => ({
       ...state,
       userData: null,
