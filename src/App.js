@@ -8,7 +8,7 @@ import SplashPage from './components/SplashPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { loginAsync } from './redux/users/userSlice';
 import Doctors from './components/Doctors';
-import { NewPassword } from './authentication/password';
+import NewPassword from './authentication/passwords/newPassword';
 
 function App() {
   const token = Cookies.get('jwt_token');
