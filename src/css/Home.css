@@ -1,12 +1,24 @@
 .doctors-container {
   display: flex;
-  align-items: center;
   list-style: none;
+  align-items: center;
+  padding-left: 300px;
+
+  /*
+
   padding-top: 120px;
-  padding-right: 1000px;
-  border-radius: 0;
+  padding-right: 1000px; */
 }
 
 .doctors-card {
   width: 300px;
+}
+
+/* .doctors-list {
+  box-sizing: none;
+} */
+
+.doctors-list button {
+  background-color: #ffff;
+  border-radius: 0;
 }
