@@ -1,20 +1,10 @@
-/* eslint-disable */
 import React from 'react';
-import { Outlet, Navigate } from 'react-router';
-import PropTypes from 'prop-types';
+import { Outlet, Navigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
-
-const ProtectedRoute = ({ token, redirectPath = '/login', children }) => {
-  if (!token) {
-    return <Navigate to={redirectPath} replace />;
-  } else {
-    return children || <Outlet />;
-  }
+const ProtectedRoute = () => {
+  const token = Cookies.get('jwt_token');
+  return token ? <Outlet /> : <Navigate to="/" replace />;
 };
 
-ProtectedRoute.propTypes = {
-  token: PropTypes.string,
-  redirectPath: PropTypes.string,
-  children: PropTypes.node.isRequired,
-};
 export default ProtectedRoute;

@@ -1,11 +1,6 @@
 import Axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
-// import { getJwtToken } from '../../components/Cookie';
-
-// const token = getJwtToken();
-
-// console.log(token);
 
 const BASE_URL = 'http://127.0.0.1:3000/doctors';
 
@@ -32,6 +27,7 @@ export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
       Accept: 'application/json',
       Authorization: Cookies.get('jwt_token'),
     },
+    withCredentials: true,
   });
   return response.data;
 });
