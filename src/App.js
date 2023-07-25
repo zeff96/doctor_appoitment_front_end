@@ -14,6 +14,7 @@ import Appointments from './components/Appointments';
 import NewAppointment from './components/NewAppointment';
 import NewPasswordForm from './authentication/passwords/newPassword';
 import NewDoctor from './Pages/NewDoctor';
+import DeleteDoctor from './components/delete';
 
 function App() {
   const token = Cookies.get('jwt_token');
@@ -40,6 +41,7 @@ function App() {
             <Route exact path="/doctors/appointments" element={<Appointments />} />
             <Route exact path="/doctors/new_appointment" element={<NewAppointment />} />
             <Route exact path="/doctors/new" element={<NewDoctor />} />
+            <Route exact path="/doctors/delete" element={<DeleteDoctor />} />
           </Route>
         </Route>
       </Routes>
