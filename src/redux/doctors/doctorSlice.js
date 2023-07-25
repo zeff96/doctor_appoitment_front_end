@@ -15,7 +15,13 @@ const initialState = {
 // create a new doctors
 
 export const createDoctor = createAsyncThunk('doctors/createDoctor', async (data) => {
-  const response = await Axios.post(`${BASE_URL}/doctors`, data);
+  const response = await Axios.post(BASE_URL, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+  });
   return response.data;
 });
 
