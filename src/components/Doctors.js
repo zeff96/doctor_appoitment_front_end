@@ -26,8 +26,12 @@ const Doctors = () => {
 
       <div className="card-group">
         <div className="card">
-          <BiSolidLeftArrow />
-          <BiSolidRightArrow />
+          <button type="button" className="d-flex justify-content-start border rounded-end btn bg-light btn-lg me-md-2">
+            <BiSolidLeftArrow />
+          </button>
+          <button type="button" className="d-flex justify-content-end border rounded-end btn btn-primary btn-lg me-md-2">
+            <BiSolidRightArrow />
+          </button>
           <ul className="d-flex justify-content-center list-unstyled align-items-center">
             {doctors.map((doctor) => (
               <li key={doctor.id} className="doctors-list">
