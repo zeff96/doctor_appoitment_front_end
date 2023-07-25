@@ -7,7 +7,7 @@ const links = [
   { path: '/doctors', text: 'DOCTORS' },
   { path: '/doctors/new_appointment', text: 'ADD APPOINTMENT' },
   { path: '/doctors/appointments', text: 'MY APPOINTMENTS' },
-  { path: 'doctors/new', text: 'ADD DOCTOR' },
+  { path: '/doctors/new', text: 'ADD DOCTOR' },
   { path: 'doctors/delete', text: 'DELETE DOCTOR' },
 ];
 
