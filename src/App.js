@@ -12,7 +12,8 @@ import Layout from './components/Layout';
 import Details from './components/Details';
 import Appointments from './components/Appointments';
 import NewAppointment from './components/NewAppointment';
-import { NewPassword } from './authentication/password';
+import NewPasswordForm from './authentication/passwords/newPassword';
+import NewDoctor from './Pages/NewDoctor';
 
 function App() {
   const token = Cookies.get('jwt_token');
@@ -31,13 +32,14 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<SplashPage />} />
-        <Route path="/reset_password/edit" element={<NewPassword />} />
+        <Route path="/reset_password/edit" element={<NewPasswordForm />} />
         <Route element={<ProtectedRoute />}>
           <Route exact path="/doctors/" element={<Layout />}>
             <Route exact path="/doctors/" element={<Doctors />} />
             <Route exact path="/doctors/:id" element={<Details />} />
             <Route exact path="/doctors/appointments" element={<Appointments />} />
             <Route exact path="/doctors/new_appointment" element={<NewAppointment />} />
+            <Route exact path="/doctors/new" element={<NewDoctor />} />
           </Route>
         </Route>
       </Routes>
