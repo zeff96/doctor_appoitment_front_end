@@ -1,9 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createDoctor } from '../redux/doctors/doctorSlice';
 
 function NewDoctor() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const implementDoctor = (e) => {
     e.preventDefault();
@@ -24,14 +26,17 @@ function NewDoctor() {
 
     formData.append('doctor[payment_attributes][consultation_fee]', e.target.consultation_fee.value);
 
-    dispatch(createDoctor(formData));
+    dispatch(createDoctor(formData)).then((result) => {
+      if (result && result.error) return;
+      navigate('/doctors');
+    });
     e.target.reset();
   };
 
   return (
     <div>
       <h1>Add Doctor</h1>
-      <form className="add-form w-60" onSubmit={implementDoctor}>
+      <form onSubmit={implementDoctor}>
         <input
           id="name"
           placeholder="name"

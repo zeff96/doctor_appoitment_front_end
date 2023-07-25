@@ -22,7 +22,7 @@ const PasswordForm = () => {
 
     dispatch(passwordResetAsync(data)).then((result) => {
       if (result && result.error) return;
-      const closeButton = document.querySelector('.btn-close');
+      const closeButton = document.querySelector('.reset-password');
       if (closeButton) {
         closeButton.click();
       }

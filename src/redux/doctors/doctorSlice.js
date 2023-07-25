@@ -51,12 +51,17 @@ export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) =>
   return response.data;
 });
 
-// Add Appointment
-// export const createAppointment = createAsyncThunk('doctors/createAppointment',
-// async (id, data) => {
-//   const response = await Axios.post(`${BASE_URL}/${1}/appointments`, data);
-//   return response.data;
-// });
+export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (id) => {
+  const res = await Axios.delete(`${BASE_URL}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
+  return res.data;
+});
 
 export const createAppointment = createAsyncThunk('doctors/createAppointment', async (id, data) => {
   const response = await Axios.post(`${BASE_URL}/${id}/appointments`, data, {
@@ -126,6 +131,15 @@ const doctorsSlice = createSlice({
       status: 'failed',
       error: action.error.message,
       isSuccessfull: false,
+    })).addCase(deleteDoctor.pending, (state) => ({
+      ...state,
+      status: 'Loading',
+    })).addCase(deleteDoctor.fulfilled, (state) => ({
+      ...state,
+      status: 'success',
+    })).addCase(deleteDoctor.rejected, (state, action) => ({
+      ...state,
+      error: action.error.message,
     }));
     // create a appointment //
     builder.addCase(createAppointment.pending, (state) => ({

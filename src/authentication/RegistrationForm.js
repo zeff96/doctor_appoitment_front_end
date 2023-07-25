@@ -41,7 +41,7 @@ function RegistrationForm() {
 
     dispatch(signUpAsync(data)).then((result) => {
       if (result && result.error) return;
-      const closeButton = document.querySelector('.btn-close');
+      const closeButton = document.querySelector('.create-new');
       if (closeButton) {
         closeButton.click();
       }
