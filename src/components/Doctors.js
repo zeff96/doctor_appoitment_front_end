@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { BiLogoYoutube } from 'react-icons/im';
-import { BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram } from 'react-icons/bi';
+import {
+  BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram, BiSolidLeftArrow, BiSolidRightArrow,
+} from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import Navbar from './Navbar';
+// import flesh from '../images/flesh.jpg';
 import '../css/Home.css';
 
 const Doctors = () => {
@@ -18,10 +20,15 @@ const Doctors = () => {
   return (
     <div>
       <Navbar />
-      <h1> LAST MODEL </h1>
+      <h1 className="d-flex justify-content-center"> LAST MODEL </h1>
+      <p className="d-flex justify-content-center">Please Select One Doctors</p>
+      <p className="d-flex justify-content-center">..............................</p>
+
       <div className="card-group">
         <div className="card">
-          <ul className="doctors-container">
+          <BiSolidLeftArrow />
+          <BiSolidRightArrow />
+          <ul className="d-flex justify-content-center list-unstyled align-items-center">
             {doctors.map((doctor) => (
               <li key={doctor.id} className="doctors-list">
                 <button

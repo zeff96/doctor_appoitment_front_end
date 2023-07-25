@@ -3,11 +3,14 @@
   list-style: none;
   align-items: center;
   padding-left: 300px;
+  border-radius: none;
+}
 
-  /*
-
-  padding-top: 120px;
-  padding-right: 1000px; */
+@media screen and (min-width: 600px) {
+  .doctors-container {
+    flex-direction: row;
+    padding-left: 300px;
+  }
 }
 
 .doctors-card {
