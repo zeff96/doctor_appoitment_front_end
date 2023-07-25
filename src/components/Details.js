@@ -47,7 +47,7 @@ const Details = () => {
           </table>
         )}
         <button
-          className="btn btn-success btn-appointment"
+          className="btn btn-info btn-appointment rounded-pill text-light h3"
           type="button"
           onClick={() => {
             navigate('appointment');
