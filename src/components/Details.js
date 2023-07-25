@@ -1,13 +1,13 @@
 import { React, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { showDoctors } from '../redux/doctors/doctorSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 const Details = () => {
-  const doctor = useSelector((state) => state.doctors.details);
+  const doctor = useAppSelector((state) => state.doctors.details);
   const navigate = useNavigate();
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(showDoctors(id));
   }, [dispatch, id]);

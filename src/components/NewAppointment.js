@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { createAppointment } from '../redux/doctors/doctorSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function NewAppointment() {
-  const user = useSelector((state) => state.user.userData.user);
-  const dispatch = useDispatch();
+  const user = useAppSelector((state) => state.user.userData.user);
+  const dispatch = useAppDispatch();
   // const [user, setUser] = useState('');
   // const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');

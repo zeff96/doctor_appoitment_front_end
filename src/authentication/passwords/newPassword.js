@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { passwordResetNewAsync } from '../../redux/users/userSlice';
+import { useAppDispatch } from '../../hooks/hooks';
 
 const NewPasswordForm = () => {
   const [error, setError] = useState('');
   const formRef = useRef();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const getResetToken = () => {

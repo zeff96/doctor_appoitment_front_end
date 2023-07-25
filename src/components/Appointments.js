@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchAppointments } from '../redux/doctors/doctorSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function Appointments() {
-  const appointments = useSelector((state) => state.doctors.appointments); // Update the selector
-  const user = useSelector((state) => state.user.userData.user); // Update the selector
-  const dispatch = useDispatch();
+  const appointments = useAppSelector((state) => state.doctors.appointments); // Update the selector
+  const user = useAppSelector((state) => state.user.userData.user); // Update the selector
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAppointments(JSON.parse(user).id));
   }, [dispatch], user);
