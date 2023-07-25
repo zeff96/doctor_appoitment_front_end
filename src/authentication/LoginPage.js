@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { loginAsync } from '../redux/users/userSlice';
 import RegistrationForm from './RegistrationForm';
-import PasswordForm from './password';
+import PasswordForm from './passwords/forgotPassword';
 
 function LoginPage() {
   const formRef = useRef();
