@@ -4,11 +4,11 @@ import { fetchAppointments } from '../redux/doctors/doctorSlice';
 
 function Appointments() {
   const appointments = useSelector((state) => state.doctors.appointments); // Update the selector
+  const user = useSelector((state) => state.user.userData.user); // Update the selector
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAppointments());
-  }, [dispatch]);
-
+    dispatch(fetchAppointments(JSON.parse(user).id));
+  }, [dispatch], user);
   return (
     <div>
       <ul className="appointments-container">

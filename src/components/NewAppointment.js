@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createAppointment } from '../redux/doctors/doctorSlice';
 
 function NewAppointment() {
+  const user = useSelector((state) => state.user.userData.user);
   const dispatch = useDispatch();
   // const [user, setUser] = useState('');
-  const [doctor, setDoctor] = useState('');
+  // const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
 
@@ -14,17 +15,17 @@ function NewAppointment() {
 
     const data = {
     //   user: document.getElementById('user'),
-      doctor: document.getElementById('doctor'),
+      // doctor: document.getElementById('doctor'),
       date: document.getElementById('date'),
       city: document.getElementById('city'),
     };
 
-    dispatch(createAppointment(data));
+    dispatch(createAppointment(JSON.parse(user).id, data));
   };
 
   return (
-    <div>
-      <h1>Add Doctor</h1>
+    <div className="">
+      <h1 className="my-5">Add Doctor</h1>
       <form className="add-form w-60" onSubmit={addAppointment}>
         {/* <input
           id="user"
@@ -37,7 +38,7 @@ function NewAppointment() {
           }}
         /> */}
 
-        <input
+        {/* <input
           id="doctor"
           name="doctor"
           value={doctor}
@@ -47,13 +48,13 @@ function NewAppointment() {
           onChange={(e) => {
             setDoctor(e.target.value);
           }}
-        />
+        /> */}
 
         <input
           id="date"
           name="date"
           value={date}
-          className="form-control"
+          className="form-control my-2"
           placeholder="Add date"
           type="text"
           onChange={(e) => {
@@ -65,7 +66,7 @@ function NewAppointment() {
           id="city"
           name="city"
           value={city}
-          className="form-control"
+          className="form-control my-2"
           placeholder="Add city"
           type="text"
           onChange={(e) => {
@@ -73,7 +74,7 @@ function NewAppointment() {
           }}
         />
 
-        <input placeholder="subimit" type="submit" />
+        <input className="my-2" placeholder="subimit" type="submit" />
 
       </form>
     </div>

@@ -34,19 +34,45 @@ export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
 
 // fetch doctors details
 export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) => {
-  const response = await Axios.get(`${BASE_URL}/${id}`);
+  const response = await Axios.get(`${BASE_URL}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
   return response.data;
 });
 
 // Add Appointment
+// export const createAppointment = createAsyncThunk('doctors/createAppointment',
+// async (id, data) => {
+//   const response = await Axios.post(`${BASE_URL}/${1}/appointments`, data);
+//   return response.data;
+// });
+
 export const createAppointment = createAsyncThunk('doctors/createAppointment', async (id, data) => {
-  const response = await Axios.post(`${BASE_URL}/doctors/${1}/appointments`, data);
+  const response = await Axios.post(`${BASE_URL}/${id}/appointments`, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
   return response.data;
 });
 
-// fetch appointment
 export const fetchAppointments = createAsyncThunk('doctors/fetchAppointments', async (id) => {
-  const response = await Axios.get(`${BASE_URL}/doctors/${id}/appointments`);
+  const response = await Axios.get(`${BASE_URL}/${id}/appointments`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
   return response.data;
 });
 
