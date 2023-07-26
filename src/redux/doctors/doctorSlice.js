@@ -63,8 +63,8 @@ export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (id) =
   return res.data;
 });
 
-export const createAppointment = createAsyncThunk('doctors/createAppointment', async (id, data) => {
-  const response = await Axios.post(`${BASE_URL}/${id}/appointments`, data, {
+export const createAppointment = createAsyncThunk('doctors/createAppointment', async (data) => {
+  const response = await Axios.post(`${BASE_URL}/${data.id}/appointments`, data, {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -75,8 +75,8 @@ export const createAppointment = createAsyncThunk('doctors/createAppointment', a
   return response.data;
 });
 
-export const fetchAppointments = createAsyncThunk('doctors/fetchAppointments', async (id) => {
-  const response = await Axios.get(`${BASE_URL}/${id}/appointments`, {
+export const fetchAppointments = createAsyncThunk('doctors/fetchAppointments', async () => {
+  const response = await Axios.get('https://doctor-api-3dvk.onrender.com/appointments', {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',

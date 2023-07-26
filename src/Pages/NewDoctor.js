@@ -13,7 +13,7 @@ function NewDoctor() {
     const formData = new FormData();
     formData.append('doctor[name]', e.target.name.value);
     formData.append('doctor[bio]', e.target.bio.value);
-    formData.append('doctor[image]', e.target.image.files[0]);
+    formData.append('doctor[image]', e.target.image.value);
 
     formData.append('doctor[location_attributes][address]', e.target.address.value);
     formData.append('doctor[location_attributes][city]', e.target.city.value);
@@ -45,6 +45,7 @@ function NewDoctor() {
           className="form-control mb-3"
           required
           autoComplete="name"
+          autoCapitalize="true"
         />
 
         <input
@@ -55,6 +56,7 @@ function NewDoctor() {
           type="text"
           required
           autoComplete="bio"
+          autoCapitalize="true"
         />
 
         <input
@@ -62,8 +64,9 @@ function NewDoctor() {
           name="image"
           className="form-control mb-3"
           placeholder="Add photo.."
-          type="file"
-          accept="image/*"
+          type="text"
+          required
+          autoComplete="off"
         />
 
         <h5>Social media</h5>
@@ -108,6 +111,7 @@ function NewDoctor() {
           type="text"
           required
           autoComplete="address"
+          autoCapitalize="true"
         />
 
         <input
@@ -118,6 +122,7 @@ function NewDoctor() {
           type="text"
           required
           autoComplete="city"
+          autoCapitalize="true"
         />
 
         <input
@@ -128,6 +133,7 @@ function NewDoctor() {
           type="text"
           required
           autoComplete="state"
+          autoCapitalize="true"
         />
 
         <input

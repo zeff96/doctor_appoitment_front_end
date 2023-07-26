@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 import Carousel from '@itseasy21/react-elastic-carousel';
 import { useNavigate } from 'react-router-dom';
-// import {
-//   BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram, BiSolidLeftArrow, BiSolidRightArrow,
-// } from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
@@ -24,7 +21,6 @@ const Doctors = () => {
 
   return (
     <div className="vh-100 d-flex flex-column justify-content-center">
-      {/* <Navbar /> */}
       <h1 className="h1 d-flex justify-content-center mb-5">Qualified Doctor</h1>
       <Carousel breakPoints={breakPoints}>
         {doctors.map((doctor) => (
@@ -37,7 +33,7 @@ const Doctors = () => {
             }}
           >
             <div className="circle-color card-body img-area d-flex m-auto">
-              <img src={doctor.image_url} alt={doctor.name} className="rounded card-img-top" height="200px" />
+              <img src={doctor.image} alt={doctor.name} className="rounded card-img-top" height="200px" />
             </div>
             <div className="doctors-card-details img-text">
               <h5>{doctor.name}</h5>

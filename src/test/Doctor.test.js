@@ -2,9 +2,9 @@ import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import renderWithproviders from './utils/utils';
-import Doctors from './components/Doctors';
-import Details from './components/Details';
+import renderWithproviders from '../utils/utils';
+import Doctors from '../components/Doctors';
+import Details from '../components/Details';
 
 const handlers = [
   rest.get('https://doctor-api-3dvk.onrender.com/doctors', (req, res, ctx) => res(
@@ -70,6 +70,7 @@ describe('Doctors POST endpoint', () => {
       headers: {
         'Content-Type': 'application/json',
       },
+
       body: JSON.stringify(newDoctorData),
     });
     expect(response.status).toBe(201);

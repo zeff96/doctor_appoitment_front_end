@@ -3,22 +3,22 @@ import { fetchAppointments } from '../redux/doctors/doctorSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function Appointments() {
-  const appointments = useAppSelector((state) => state.doctors.appointments); // Update the selector
-  const user = useAppSelector((state) => state.user.userData.user); // Update the selector
+  const appointments = useAppSelector((state) => state.doctors.appointments);
   const dispatch = useAppDispatch();
-  useEffect((user) => {
-    dispatch(fetchAppointments(JSON.parse(user).id));
-  }, [dispatch], user);
+  useEffect(() => {
+    dispatch(fetchAppointments());
+  }, [dispatch]);
   return (
-    <div>
-      <h2>My appointments</h2>
+    <div className="pt-5">
+      <h2 className="text-center mb-3">My Appointments</h2>
       <ul className="list-group appointments-container">
         {appointments.map((appointment) => (
           <li key={appointment.id} className="list-group-item appointments-list">
             <div className="appointments-card">
               <div className="appointments-card-details">
-                <h5>{appointment.date}</h5>
-                <p>{appointment.city}</p>
+                <h5>{appointment.doctor_name}</h5>
+                <span className="d-block">{appointment.city}</span>
+                <span>{appointment.date}</span>
               </div>
             </div>
           </li>
