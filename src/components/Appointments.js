@@ -6,7 +6,7 @@ function Appointments() {
   const appointments = useAppSelector((state) => state.doctors.appointments); // Update the selector
   const user = useAppSelector((state) => state.user.userData.user); // Update the selector
   const dispatch = useAppDispatch();
-  useEffect(() => {
+  useEffect((user) => {
     dispatch(fetchAppointments(JSON.parse(user).id));
   }, [dispatch], user);
   return (
