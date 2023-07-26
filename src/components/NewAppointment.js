@@ -4,7 +4,7 @@ import { createAppointment } from '../redux/doctors/doctorSlice';
 
 function NewAppointment() {
   const dispatch = useDispatch();
-  // const [user, setUser] = useState('');
+
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
@@ -13,7 +13,7 @@ function NewAppointment() {
     e.preventDefault();
 
     const data = {
-    //   user: document.getElementById('user'),
+   
       doctor: document.getElementById('doctor'),
       date: document.getElementById('date'),
       city: document.getElementById('city'),
@@ -26,18 +26,7 @@ function NewAppointment() {
     <div>
       <h1>Add Doctor</h1>
       <form className="add-form w-60" onSubmit={addAppointment}>
-        {/* <input
-          id="user"
-          placeholder="user"
-          value={user}
-          type="text"
-          className="form-control"
-          onChange={(e) => {
-            setUser(e.target.value);
-          }}
-        /> */}
-
-        <input
+          <input
           id="doctor"
           name="doctor"
           value={doctor}

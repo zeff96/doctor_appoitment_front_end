@@ -6,7 +6,7 @@ import {
 } from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import Navbar from './Navbar';
-import '../css/Home.css';
+
 
 const Doctors = () => {
   const navigate = useNavigate();
