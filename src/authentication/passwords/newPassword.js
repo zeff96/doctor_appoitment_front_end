@@ -16,6 +16,8 @@ const NewPasswordForm = () => {
     const resetToken = url.searchParams.get('reset_password_token');
 
     return resetToken;
+    // const resetPasswordToken = url.searchParams.get('reset_password_token');
+    // return resetPasswordToken;
   };
 
   const handleSubmit = (e) => {
@@ -49,6 +51,8 @@ const NewPasswordForm = () => {
 
   return (
     <form ref={formRef} className="form container p-3" onSubmit={handleSubmit}>
+
+      <h1 className="text-center fw-bold">Change your password</h1>
       <label htmlFor="newPassword" className="form-label d-block mb-3">
         New password
         <input type="password" name="password" id="newPassword" required placeholder="password" className="form-control" />
