@@ -1,70 +1,145 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Doctors Appoinments Frontend
 
-## Available Scripts
+> Doctors Appoinments frontend is react forntend application for doctor book appoinemnts. This applications is responsive and users can load, create, and delete doctors and reservations. Users need to sign up or sign in to access application. They can sign up or sign in using the sign up and login forms.
 
-In the project directory, you can run:
+## Link to the backend
 
-### `npm start`
+[Book Appoinments Backend](https://github.com/zeff96/doctor_appointment_back_end)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Kanban Board
+[Kanban Board](https://github.com/users/zeff96/projects/9)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Initial state of kanban board
+[Initial Kanban Board](https://github.com/users/zeff96/projects/9)
 
-### `npm test`
+> ***We are a group of four***
+1. Team 1 - [Josue](https://github.com/josuerushanika)
+2. Team 2 - [Matthieu9](https://github.com/Matthieu96Code)
+3. Team 3 - [Adeka](https://github.com/zeff96)
+4. Team 4 - [Mutai](https://github.com/Mutai-Gilbert)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Preview:
 
-### `npm run build`
+### Home Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![screenshot](./)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Details Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![screenshot](./)
 
-### `npm run eject`
+### Book Appoinments Page
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![screenshot](./)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Appointments Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![screenshot](./)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Built With
 
-## Learn More
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+- REACT
+- Redux
+- Webpack
+- Jest
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Live version
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Book-Appoinments](https://///)
 
-### Code Splitting
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To get a local copy up and running follow these simple example steps.
 
-### Analyzing the Bundle Size
+### Prerequisites
+- A text editor(preferably Visual Studio Code)
+- Node
+- Web browser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Install
+- [Git](https://git-scm.com/downloads)
+- [Node](https://nodejs.org/en/download/)
 
-### Making a Progressive Web App
+### Using it Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Clone the project
 
-### Advanced Configuration
+```bash 
+git clone https://github.com/zeff96/doctor_appoitment_front_end.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+cd book-appointment-frontend
+```
 
-### Deployment
+- Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm i 
+or
+npm install
+```
+- To Start the development server
+```bash
+npm start
+```
 
-### `npm run build` fails to minify
+- To test the project
+```bash
+npm run test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Visit And Open Files
+
+[Visit Repo](https://github.com/zeff96/doctor_appoitment_front_end)
+
+## Download Repo
+
+[Download Repo](https://github.com/zeff96/doctor_appoitment_front_end)
+
+## Authors
+
+👤 **SENOU Kodjo Matthieu**
+
+- GitHub: [@Matthieu96Code](https://github.com/Matthieu96Code)
+- Twitter: [@MatthieuSENOU](https://twitter.com/MatthieuSenou)
+- LinkedIn: [Kodjo Matthieu SENOU](https://www.linkedin.com/in/kodjo-matthieu-senou/)
+
+👤 **Adeka Zeffs**
+
+- GitHub: [zeff96](https://github.com/zeff96)
+- LinkedIn: [Zeff Adeka](https://www.linkedin.com/in/zeff-adeka/)
+
+👤 **Gilbert Mutai**
+
+- GitHub: [@Mutai-Gilbert](https://github.com/Mutai-Gilbert/budget_manager.git)
+
+👤 **Josue RUSHANIKA**
+
+- GitHub: [Josue Rushanika](https://github.com/josuerushanika)
+- Twitter: [Josue Rushanika](https://twitter.com/josuerushanika)
+- LinkedIn: [Josue Rushanika](https://www.linkedin.com/in/josue-rushanika-336049b3/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Chimwemwe-127001/book-appointment-frontend/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Inspired by original design for Creative Commons by [Murat Korkmaz](https://www.behance.net/muratk) on [Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign).
+- Inspiration: Microverse
+
+## 📝 License
+
+This project is [MIT](./LICENSE.md) licensed.
