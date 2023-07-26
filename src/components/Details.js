@@ -1,24 +1,24 @@
 import { React, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { showDoctors } from '../redux/doctors/doctorSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 const Details = () => {
-  const doctor = useSelector((state) => state.doctors.details);
+  const doctor = useAppSelector((state) => state.doctors.details);
   const navigate = useNavigate();
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(showDoctors(id));
   }, [dispatch, id]);
 
   return (
     <div className="row d-flex align-items-center">
-      <div className="col-7">
-        <img src={doctor.image_url} alt={doctor.name} className="img-fluid" />
+      <div className="col-7 d-flex justify-content-center align-items-center vh-100">
+        <img src={doctor.image_url} alt={doctor.name} className="img-fluid img-thumbnail text-align-center" width="300px" height="200px" />
       </div>
-      <div className="col-5">
-        <h2>{doctor.name}</h2>
+      <div className="col-5 d-flex flex-column justify-content-start align-items-start mt-5 mb-auto">
+        <h2 className="mt-5">{doctor.name}</h2>
         <p>{doctor.bio}</p>
         {doctor && doctor.location && doctor.payment && (
           <table className="table table-striped">
@@ -47,10 +47,10 @@ const Details = () => {
           </table>
         )}
         <button
-          className="btn btn-success btn-appointment"
+          className="btn btn-info btn-appointment rounded-pill text-light h3"
           type="button"
           onClick={() => {
-            navigate('appointment');
+            navigate('new_appointment');
           }}
         >
           appointment

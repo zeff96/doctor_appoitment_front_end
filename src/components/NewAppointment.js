@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createAppointment } from '../redux/doctors/doctorSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+
 
 function NewAppointment() {
   const dispatch = useDispatch();
@@ -9,8 +11,15 @@ function NewAppointment() {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
 
-  const addAppointment = (e) => {
+function NewDoctor() {
+  const user = useAppSelector((state) => state.user.userData.user);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+
+  const implementAppointment = (e) => {
     e.preventDefault();
+
 
     const data = {
 
@@ -19,54 +28,63 @@ function NewAppointment() {
       city: document.getElementById('city'),
     };
 
-    dispatch(createAppointment(data));
+    const formData = new FormData();
+    // formData.append('appointment[doctor]', e.target.doctor.value);
+    formData.append('appointment[date]', e.target.date.value);
+    formData.append('appointment[city]', e.target.city.value);
+
+
+    dispatch(createAppointment(JSON.parse(user).id, formData)).then((result) => {
+      if (result && result.error) return;
+      navigate('/doctors');
+    });
+    e.target.reset();
   };
 
   return (
     <div>
+
       <h1>Add Doctor</h1>
       <form className="add-form w-60" onSubmit={addAppointment}>
         <input
+
+      <h1>Add Appointment</h1>
+      <form onSubmit={implementAppointment}>
+        {/* <input
           id="doctor"
-          name="doctor"
-          value={doctor}
-          className="form-control"
-          placeholder="Add doctor"
+          placeholder="doctor"
           type="text"
-          onChange={(e) => {
-            setDoctor(e.target.value);
-          }}
-        />
+          name="doctor"
+          className="form-control mb-3"
+          required
+          autoComplete="doctor"
+        /> */}
 
         <input
           id="date"
           name="date"
-          value={date}
-          className="form-control"
+          className="form-control mb-3"
           placeholder="Add date"
-          type="text"
-          onChange={(e) => {
-            setDate(e.target.value);
-          }}
+          type="date"
+          required
+          autoComplete="date"
         />
 
         <input
           id="city"
           name="city"
-          value={city}
-          className="form-control"
+          className="form-control mb-3"
           placeholder="Add city"
           type="text"
-          onChange={(e) => {
-            setCity(e.target.value);
-          }}
+          required
+          autoComplete="city"
         />
 
-        <input placeholder="subimit" type="submit" />
+        <button type="submit" className="btn btn-primary">Create Appointment</button>
 
       </form>
     </div>
   );
 }
 
-export default NewAppointment;
+export default NewDoctor;

@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { loginAsync } from '../redux/users/userSlice';
 import RegistrationForm from './RegistrationForm';
 import PasswordForm from './passwords/forgotPassword';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function LoginPage() {
   const formRef = useRef();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const error = useSelector((state) => state.user.loginError);
+  const error = useAppSelector((state) => state.user.loginError);
 
   function handleSubmit(e) {
     e.preventDefault();

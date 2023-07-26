@@ -1,20 +1,21 @@
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { passwordResetNewAsync } from '../../redux/users/userSlice';
+import { useAppDispatch } from '../../hooks/hooks';
 
-const NewPassword = () => {
+const NewPasswordForm = () => {
   const [error, setError] = useState('');
   const formRef = useRef();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const getResetToken = () => {
     const currentUrl = window.location.href;
     const url = new URL(currentUrl);
-    const resetPasswordToken = url.searchParams.get('reset_password_token');
-    return resetPasswordToken;
+    const resetToken = url.searchParams.get('reset_password_token');
+
+    return resetToken;
   };
 
   const handleSubmit = (e) => {
@@ -63,4 +64,4 @@ const NewPassword = () => {
   );
 };
 
-export default NewPassword;
+export default NewPasswordForm;

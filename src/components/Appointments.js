@@ -1,23 +1,24 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchAppointments } from '../redux/doctors/doctorSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function Appointments() {
-  const appointments = useSelector((state) => state.doctors.appointments); // Update the selector
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAppointments());
-  }, [dispatch]);
-
+  const appointments = useAppSelector((state) => state.doctors.appointments); // Update the selector
+  const user = useAppSelector((state) => state.user.userData.user); // Update the selector
+  const dispatch = useAppDispatch();
+  useEffect((user) => {
+    dispatch(fetchAppointments(JSON.parse(user).id));
+  }, [dispatch], user);
   return (
     <div>
-      <ul className="appointments-container">
+      <h2>My appointments</h2>
+      <ul className="list-group appointments-container">
         {appointments.map((appointment) => (
-          <li key={appointment.id} className="appointments-list">
+          <li key={appointment.id} className="list-group-item appointments-list">
             <div className="appointments-card">
               <div className="appointments-card-details">
-                <h5>{appointment.doctor}</h5>
-                <p>{appointment.date}</p>
+                <h5>{appointment.date}</h5>
+                <p>{appointment.city}</p>
               </div>
             </div>
           </li>
