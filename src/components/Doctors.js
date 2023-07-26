@@ -33,7 +33,7 @@ const Doctors = () => {
             }}
           >
             <div className="circle-color card-body img-area d-flex m-auto">
-              <img src={doctor.image_url} alt={doctor.name} className="rounded card-img-top" height="200px" />
+              <img src={doctor.image} alt={doctor.name} className="rounded card-img-top" height="200px" />
             </div>
             <div className="doctors-card-details img-text">
               <h5>{doctor.name}</h5>

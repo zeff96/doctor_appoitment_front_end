@@ -1,31 +1,35 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createAppointment } from '../redux/doctors/doctorSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function NewAppointment() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  // const userData = useAppSelector((state) => state.user.userData);
+  // const user = JSON.parse(userData.user);
+  const doctors = useAppSelector((state) => state.doctors.doctors);
+  const [selectedDoctorId, setSelectedDoctorId] = useState('');
+  const formRef = useRef();
 
-  const [doctor, setDoctor] = useState('');
-  const [date, setDate] = useState('');
-  const [city, setCity] = useState('');
+  const handleDoctorChange = (event) => {
+    setSelectedDoctorId(event.target.value);
+  };
 
   const implementAppointment = (e) => {
     e.preventDefault();
 
+    const formData = new FormData(formRef.current);
     const data = {
-
-      doctor: document.getElementById('doctor'),
-      date: document.getElementById('date'),
-      city: document.getElementById('city'),
+      id: selectedDoctorId,
+      appointment: {
+        date: formData.get('date'),
+        city: formData.get('city'),
+        doctor_id: selectedDoctorId,
+      },
     };
 
-    const formData = new FormData();
-    // formData.append('appointment[doctor]', e.target.doctor.value);
-    formData.append('appointment[date]', e.target.date.value);
-    formData.append('appointment[city]', e.target.city.value);
-
-    dispatch(createAppointment(JSON.parse(user).id, formData)).then((result) => {
+    dispatch(createAppointment(data)).then((result) => {
       if (result && result.error) return;
       navigate('/doctors');
     });
@@ -33,9 +37,17 @@ function NewAppointment() {
   };
 
   return (
-    <div>
-      <h1>Add Appointment</h1>
-      <form onSubmit={implementAppointment}>
+    <div className="pt-5">
+      <h1 className="text-center mb-3">Add Appointment</h1>
+      <form onSubmit={implementAppointment} ref={formRef}>
+        <select value={selectedDoctorId} onChange={handleDoctorChange} required className="form-select mb-3">
+          <option defaultValue="Select a Doctor">Select a Doctor</option>
+          {doctors.map((doctor) => (
+            <option key={doctor.id} value={doctor.id}>
+              {doctor.name}
+            </option>
+          ))}
+        </select>
 
         <input
           id="date"
@@ -44,7 +56,7 @@ function NewAppointment() {
           placeholder="Add date"
           type="date"
           required
-          autoComplete="date"
+          autoComplete="off"
         />
 
         <input
@@ -55,8 +67,8 @@ function NewAppointment() {
           type="text"
           required
           autoComplete="city"
+          autoCapitalize="true"
         />
-
         <button type="submit" className="btn btn-primary">Create Appointment</button>
 
       </form>
@@ -64,4 +76,4 @@ function NewAppointment() {
   );
 }
 
-export default NewDoctor;
+export default NewAppointment;

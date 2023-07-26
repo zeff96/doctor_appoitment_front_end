@@ -12,7 +12,7 @@ const initialState = {
   passwordResetNewError: null,
 };
 
-const url = ' http://localhost:3000';
+const url = ' https://doctor-api-3dvk.onrender.com';
 
 export const signUpAsync = createAsyncThunk(
   'signup/Async',

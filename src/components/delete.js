@@ -32,7 +32,7 @@ const DeleteDoctor = () => {
   ));
 
   return (
-    <div>
+    <div className="pt-5">
       {doctors && <ul className="list-group">{listDoctors}</ul>}
     </div>
   );
