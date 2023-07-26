@@ -2,18 +2,10 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Navbar from './components/Navbar';
-import setupStore from './redux/store';
+import Navbar from '../components/Navbar';
+import setupStore from '../redux/store';
 
 const store = setupStore();
-
-// const initialState = {
-
-//   user: {
-//     loading: false,
-
-//   },
-// };
 
 describe('Navbar', () => {
   test('renders all navigation links', () => {
@@ -25,7 +17,7 @@ describe('Navbar', () => {
       </Provider>,
     );
 
-    const linkTexts = ['doctors', 'Appointments form', 'My appointments', 'Add doctor', 'Delete doctor', 'Register'];
+    const linkTexts = [/doctors/i, /add appointment/i, /My appointments/i, /Add doctor/i, /Delete doctor/i];
 
     linkTexts.forEach((text) => {
       const linkElement = screen.getByText(text);

@@ -1,13 +1,7 @@
 import { useEffect } from 'react';
 import Carousel from '@itseasy21/react-elastic-carousel';
 import { useNavigate } from 'react-router-dom';
-// import {
-//   BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram, BiSolidLeftArrow, BiSolidRightArrow,
-// } from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
-
-import Navbar from './Navbar';
-
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 const breakPoints = [
@@ -27,7 +21,6 @@ const Doctors = () => {
 
   return (
     <div className="vh-100 d-flex flex-column justify-content-center">
-      {/* <Navbar /> */}
       <h1 className="h1 d-flex justify-content-center mb-5">Qualified Doctor</h1>
       <Carousel breakPoints={breakPoints}>
         {doctors.map((doctor) => (
