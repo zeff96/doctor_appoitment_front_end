@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
-  { width: 170, itemsToShow: 2 },
   { width: 550, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1200, itemsToShow: 4 },

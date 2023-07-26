@@ -11,13 +11,14 @@ function Appointments() {
   }, [dispatch], user);
   return (
     <div>
-      <ul className="list- group appointments-container">
+      <h2>My appointments</h2>
+      <ul className="list-group appointments-container">
         {appointments.map((appointment) => (
           <li key={appointment.id} className="list-group-item appointments-list">
             <div className="appointments-card">
               <div className="appointments-card-details">
-                <h5>{appointment.doctor}</h5>
-                <p>{appointment.date}</p>
+                <h5>{appointment.date}</h5>
+                <p>{appointment.city}</p>
               </div>
             </div>
           </li>

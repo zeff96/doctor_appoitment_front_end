@@ -12,7 +12,7 @@ function NewDoctor() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('appointment[doctor]', e.target.doctor.value);
+    // formData.append('appointment[doctor]', e.target.doctor.value);
     formData.append('appointment[date]', e.target.date.value);
     formData.append('appointment[city]', e.target.city.value);
 
@@ -27,7 +27,7 @@ function NewDoctor() {
     <div>
       <h1>Add Appointment</h1>
       <form onSubmit={implementAppointment}>
-        <input
+        {/* <input
           id="doctor"
           placeholder="doctor"
           type="text"
@@ -35,7 +35,7 @@ function NewDoctor() {
           className="form-control mb-3"
           required
           autoComplete="doctor"
-        />
+        /> */}
 
         <input
           id="date"

@@ -10,7 +10,7 @@ const Layout = () => (
           <i className="bi bi-caret-right-fill text-light" />
         </button>
       </div>
-      <div className="col-xxl-9 col-xl-8 col-lg-8 col-md-3 mx-auto py-5" style={{ height: '100vh' }}>
+      <div className="col-xxl-9 col-xl-8 col-lg-6 col-md-4 mx-auto py-6" style={{ height: '100vh' }}>
         <Outlet />
       </div>
     </div>
