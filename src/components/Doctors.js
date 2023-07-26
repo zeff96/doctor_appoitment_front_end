@@ -46,9 +46,9 @@ const Doctors = () => {
                 {doctor.bio}
               </p>
               <div className="social-media">
-                <a href={doctor.social_media.facebook} aria-label="Facebook" target="_blank" rel="noreferrer"><i className="bi bi-facebook p-1 mx-2 h5 text-dark" /></a>
-                <a href={doctor.social_media.twitter} aria-label="Twitter" target="_blank" rel="noreferrer"><i className="bi bi-twitter p-1 mx-2 h5 text-dark" /></a>
-                <a href={doctor.social_media.instagram} aria-label="Instagram" target="_blank" rel="noreferrer"><i className="bi bi-instagram p-1 mx-2 h5 text-dark" /></a>
+                <a href={doctor.social_media?.facebook} aria-label="Facebook" target="_blank" rel="noreferrer"><i className="bi bi-facebook p-1 mx-2 h5 text-dark" /></a>
+                <a href={doctor.social_media?.twitter} aria-label="Twitter" target="_blank" rel="noreferrer"><i className="bi bi-twitter p-1 mx-2 h5 text-dark" /></a>
+                <a href={doctor.social_media?.instagram} aria-label="Instagram" target="_blank" rel="noreferrer"><i className="bi bi-instagram p-1 mx-2 h5 text-dark" /></a>
               </div>
             </div>
           </button>

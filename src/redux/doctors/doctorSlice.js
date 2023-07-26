@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 
-const BASE_URL = 'http://127.0.0.1:3000/doctors';
+const BASE_URL = 'https://doctor-api-3dvk.onrender.com/doctors';
 
 const initialState = {
   doctors: [],
