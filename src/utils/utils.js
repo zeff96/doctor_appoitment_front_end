@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import setupStore from '../redux/store';
+
 export default function renderWithProviders(
   ui,
   {
