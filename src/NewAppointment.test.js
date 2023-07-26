@@ -5,6 +5,7 @@ import { setupServer } from 'msw/node';
 import renderWithproviders from './utils/utils';
 import Doctors from './components/Doctors';
 import Details from './components/Details';
+
 const handlers = [
   rest.get('https://doctor-api-3dvk.onrender.com/doctors', (req, res, ctx) => res(
     ctx.status(200),
@@ -32,12 +33,8 @@ const handlers = [
       )
     );
   }),
-  rest.post('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => {
-    return res(ctx.status(201), ctx.json({ appointmentId: 1, ...req.body }));
-  }),
-  rest.get('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json([{ id: 1, time: '2023-07-26T12:00:00' }]));
-  }),
+  rest.post('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => res(ctx.status(201), ctx.json({ appointmentId: 1, ...req.body }))),
+  rest.get('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => res(ctx.status(200), ctx.json([{ id: 1, time: '2023-07-26T12:00:00' }]))),
 ];
 const server = setupServer(...handlers);
 beforeAll(() => server.listen());
@@ -170,9 +167,7 @@ describe('Appointment POST endpoint', () => {
       doctorId: 1,
     };
     server.use(
-      rest.post('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => {
-        return res(ctx.status(500), ctx.json({ error: 'Failed to create appointment' }));
-      }),
+      rest.post('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => res(ctx.status(500), ctx.json({ error: 'Failed to create appointment' }))),
     );
     const response = await fetch('https://doctor-api-3dvk.onrender.com/1/appointments', {
       method: 'POST',
@@ -194,9 +189,7 @@ describe('Appointments FETCH endpoint', () => {
       { id: 2, time: '2023-07-27T10:30:00' },
     ];
     server.use(
-      rest.get('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(mockAppointments));
-      }),
+      rest.get('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => res(ctx.status(200), ctx.json(mockAppointments))),
     );
     const response = await fetch(`https://doctor-api-3dvk.onrender.com/${doctorId}/appointments`, {
       method: 'GET',
@@ -208,9 +201,7 @@ describe('Appointments FETCH endpoint', () => {
   it('should handle error when fetching appointments', async () => {
     const doctorId = 1;
     server.use(
-      rest.get('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => {
-        return res(ctx.status(500), ctx.json({ error: 'Failed to fetch appointments' }));
-      }),
+      rest.get('https://doctor-api-3dvk.onrender.com/:id/appointments', (req, res, ctx) => res(ctx.status(500), ctx.json({ error: 'Failed to fetch appointments' }))),
     );
     const response = await fetch(`https://doctor-api-3dvk.onrender.com/${doctorId}/appointments`, {
       method: 'GET',

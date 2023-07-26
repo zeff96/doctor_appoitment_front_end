@@ -7,7 +7,6 @@ import {
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import Navbar from './Navbar';
 
-
 const Doctors = () => {
   const navigate = useNavigate();
   const doctors = useSelector((state) => state.doctors.doctors);

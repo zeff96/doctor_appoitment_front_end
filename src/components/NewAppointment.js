@@ -13,7 +13,7 @@ function NewAppointment() {
     e.preventDefault();
 
     const data = {
-   
+
       doctor: document.getElementById('doctor'),
       date: document.getElementById('date'),
       city: document.getElementById('city'),
@@ -26,7 +26,7 @@ function NewAppointment() {
     <div>
       <h1>Add Doctor</h1>
       <form className="add-form w-60" onSubmit={addAppointment}>
-          <input
+        <input
           id="doctor"
           name="doctor"
           value={doctor}
