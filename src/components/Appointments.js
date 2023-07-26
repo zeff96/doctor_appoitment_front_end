@@ -11,9 +11,9 @@ function Appointments() {
   }, [dispatch], user);
   return (
     <div>
-      <ul className="appointments-container">
+      <ul className="list- group appointments-container">
         {appointments.map((appointment) => (
-          <li key={appointment.id} className="appointments-list">
+          <li key={appointment.id} className="list-group-item appointments-list">
             <div className="appointments-card">
               <div className="appointments-card-details">
                 <h5>{appointment.doctor}</h5>
