@@ -27,7 +27,7 @@ const Navbar = () => {
               <li className="nav-item py-2 ps-2 col-12" key={link.text}>
                 <NavLink
                   to={link.path}
-                  className={({ isActive }) => (isActive ? 'd-flex bg-info text-light text-decoration-none h6 py-2 ms-4 ps-3 pe-auto my-0 fw-bold' : 'd-flex text-dark text-decoration-none h6 py-2 ms-4 ps-3 pe-auto my-0 fw-bold btn btn-outline-info')}
+                  className={({ isActive }) => (isActive ? 'd-flex bg-info text-light text-decoration-none h6 py-2 ms-4 ps-3 pe-auto my-0 fw-bold' : 'd-flex text-dark text-decoration-none h6 py-2 ms-4 ps-3 pe-auto my-0 fw-bold')}
                 >
                   {link.text}
                 </NavLink>
