@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
-import Carousel from 'react-elastic-carousel';
+import Carousel from '@itseasy21/react-elastic-carousel';
 import { useNavigate } from 'react-router-dom';
+// import {
+//   BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram, BiSolidLeftArrow, BiSolidRightArrow,
+// } from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
