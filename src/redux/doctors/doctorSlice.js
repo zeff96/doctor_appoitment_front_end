@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 
-const BASE_URL = 'http://127.0.0.1:3000/doctors';
+const BASE_URL = 'https://doctor-api-3dvk.onrender.com/doctors';
 
 const initialState = {
   doctors: [],
@@ -15,7 +15,13 @@ const initialState = {
 // create a new doctors
 
 export const createDoctor = createAsyncThunk('doctors/createDoctor', async (data) => {
-  const response = await Axios.post(`${BASE_URL}/doctors`, data);
+  const response = await Axios.post(BASE_URL, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+  });
   return response.data;
 });
 
@@ -34,19 +40,50 @@ export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
 
 // fetch doctors details
 export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) => {
-  const response = await Axios.get(`${BASE_URL}/${id}`);
+  const response = await Axios.get(`${BASE_URL}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
   return response.data;
 });
 
-// Add Appointment
+export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (id) => {
+  const res = await Axios.delete(`${BASE_URL}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
+  return res.data;
+});
+
 export const createAppointment = createAsyncThunk('doctors/createAppointment', async (id, data) => {
-  const response = await Axios.post(`${BASE_URL}/doctors/${1}/appointments`, data);
+  const response = await Axios.post(`${BASE_URL}/${id}/appointments`, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
   return response.data;
 });
 
-// fetch appointment
 export const fetchAppointments = createAsyncThunk('doctors/fetchAppointments', async (id) => {
-  const response = await Axios.get(`${BASE_URL}/doctors/${id}/appointments`);
+  const response = await Axios.get(`${BASE_URL}/${id}/appointments`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: Cookies.get('jwt_token'),
+    },
+    withCredentials: true,
+  });
   return response.data;
 });
 
@@ -94,6 +131,15 @@ const doctorsSlice = createSlice({
       status: 'failed',
       error: action.error.message,
       isSuccessfull: false,
+    })).addCase(deleteDoctor.pending, (state) => ({
+      ...state,
+      status: 'Loading',
+    })).addCase(deleteDoctor.fulfilled, (state) => ({
+      ...state,
+      status: 'success',
+    })).addCase(deleteDoctor.rejected, (state, action) => ({
+      ...state,
+      error: action.error.message,
     }));
     // create a appointment //
     builder.addCase(createAppointment.pending, (state) => ({

@@ -1,65 +1,59 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import Carousel from '@itseasy21/react-elastic-carousel';
 import { useNavigate } from 'react-router-dom';
-import {
-  BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram, BiSolidLeftArrow, BiSolidRightArrow,
-} from 'react-icons/bi';
+// import {
+//   BiLogoYoutube, BiLogoFacebookSquare, BiLogoInstagram, BiSolidLeftArrow, BiSolidRightArrow,
+// } from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
-import Navbar from './Navbar';
-import '../css/Home.css';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 4 },
+];
 
 const Doctors = () => {
   const navigate = useNavigate();
-  const doctors = useSelector((state) => state.doctors.doctors);
-  const dispatch = useDispatch();
+  const doctors = useAppSelector((state) => state.doctors.doctors);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fechDoctors());
   }, [dispatch]);
 
   return (
-    <div>
-      <Navbar />
-      <h1 className="d-flex justify-content-center"> LAST MODEL </h1>
-      <p className="d-flex justify-content-center">Please Select One Doctors</p>
-      <p className="d-flex justify-content-center">..............................</p>
-
-      <div className="card-group">
-        <div className="card">
-          <button type="button" className="d-flex justify-content-start border rounded-end btn bg-light btn-lg me-md-2">
-            <BiSolidLeftArrow />
+    <div className="vh-100 d-flex flex-column justify-content-center">
+      {/* <Navbar /> */}
+      <h1 className="h1 d-flex justify-content-center mb-5">Qualified Doctor</h1>
+      <Carousel breakPoints={breakPoints}>
+        {doctors.map((doctor) => (
+          <button
+            key={doctor.id}
+            className="doctors-card card border-white"
+            type="button"
+            onClick={() => {
+              navigate(`${doctor.id}`);
+            }}
+          >
+            <div className="circle-color card-body img-area d-flex m-auto">
+              <img src={doctor.image_url} alt={doctor.name} className="rounded card-img-top" height="200px" />
+            </div>
+            <div className="doctors-card-details img-text">
+              <h5>{doctor.name}</h5>
+              <hr />
+              <p className="doctors-details">
+                {doctor.bio}
+              </p>
+              <div className="social-media">
+                <a href={doctor.social_media?.facebook} aria-label="Facebook" target="_blank" rel="noreferrer"><i className="bi bi-facebook p-1 mx-2 h5 text-dark" /></a>
+                <a href={doctor.social_media?.twitter} aria-label="Twitter" target="_blank" rel="noreferrer"><i className="bi bi-twitter p-1 mx-2 h5 text-dark" /></a>
+                <a href={doctor.social_media?.instagram} aria-label="Instagram" target="_blank" rel="noreferrer"><i className="bi bi-instagram p-1 mx-2 h5 text-dark" /></a>
+              </div>
+            </div>
           </button>
-          <button type="button" className="d-flex justify-content-end border rounded-end btn btn-primary btn-lg me-md-2">
-            <BiSolidRightArrow />
-          </button>
-          <ul className="d-flex justify-content-center list-unstyled align-items-center">
-            {doctors.map((doctor) => (
-              <li key={doctor.id} className="doctors-list">
-                <button
-                  className="doctors-card"
-                  type="button"
-                  onClick={() => {
-                    navigate(`${doctor.id}`);
-                  }}
-                >
-                  <div className="circle-color">
-                    <img src={doctor.image_url} alt={doctor.name} className="rounded-circle w-50 h-20 blob" width="2" />
-                  </div>
-                  <div className="doctors-card-details">
-                    <h5>{doctor.name}</h5>
-                    <p className="dots2">..............................</p>
-                    <p className="doctors-details">
-                      {doctor.bio}
-                    </p>
-                  </div>
-                  <BiLogoYoutube />
-                  <BiLogoFacebookSquare />
-                  <BiLogoInstagram />
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+        ))}
+      </Carousel>
     </div>
   );
 };

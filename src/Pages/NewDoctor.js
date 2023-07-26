@@ -1,169 +1,156 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createDoctor } from '../redux/doctors/doctorSlice';
 
 function NewDoctor() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [bio, setBio] = useState('');
-  const [facebook, setFacebook] = useState('');
-  const [twitter, setTwitter] = useState('');
-  const [instagram, setInstagram] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zipcode, setZipcode] = useState('');
-  const [amount, setAmount] = useState('');
+  const navigate = useNavigate();
 
   const implementDoctor = (e) => {
     e.preventDefault();
 
-    const data = {
-      name: document.getElementById('name'),
-      image: document.getElementById('image_url'),
-      facebook: document.getElementById('facebook'),
-      bio: document.getElementById('bio'),
-      city: document.getElementById('city'),
-      state: document.getElementById('state'),
-      zipcode: document.getElementById('zipcode'),
-      amount: document.getElementById('amount'),
-      instagram: document.getElementById('instagram'),
-      twitter: document.getElementById('twitter'),
-      address: document.getElementById('address'),
-    };
+    const formData = new FormData();
+    formData.append('doctor[name]', e.target.name.value);
+    formData.append('doctor[bio]', e.target.bio.value);
+    formData.append('doctor[image]', e.target.image.files[0]);
 
-    dispatch(createDoctor(data));
+    formData.append('doctor[location_attributes][address]', e.target.address.value);
+    formData.append('doctor[location_attributes][city]', e.target.city.value);
+    formData.append('doctor[location_attributes][state]', e.target.state.value);
+    formData.append('doctor[location_attributes][zip_code]', e.target.zip_code.value);
+
+    formData.append('doctor[social_medium_attributes][facebook]', e.target.facebook.value);
+    formData.append('doctor[social_medium_attributes][twitter]', e.target.twitter.value);
+    formData.append('doctor[social_medium_attributes][instagram]', e.target.instagram.value);
+
+    formData.append('doctor[payment_attributes][consultation_fee]', e.target.consultation_fee.value);
+
+    dispatch(createDoctor(formData)).then((result) => {
+      if (result && result.error) return;
+      navigate('/doctors');
+    });
+    e.target.reset();
   };
 
   return (
     <div>
       <h1>Add Doctor</h1>
-      <form className="add-form w-60" onSubmit={implementDoctor}>
+      <form onSubmit={implementDoctor}>
         <input
           id="name"
           placeholder="name"
-          value={name}
           type="text"
-          className="form-control"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-
-        <input
-          id="image_url"
-          name="image_url"
-          className="form-control"
-          placeholder="Add photo.."
-          type="file"
-        />
-
-        <input
-          id="facebook"
-          name="facebook"
-          value={facebook}
-          className="form-control"
-          placeholder="Add facebook link.."
-          type="text"
-          onChange={(e) => {
-            setFacebook(e.target.value);
-          }}
+          name="name"
+          className="form-control mb-3"
+          required
+          autoComplete="name"
         />
 
         <input
           id="bio"
           name="bio"
-          value={bio}
-          className="form-control"
+          className="form-control mb-3"
           placeholder="Add bio"
           type="text"
-          onChange={(e) => {
-            setBio(e.target.value);
-          }}
+          required
+          autoComplete="bio"
         />
 
         <input
-          id="city"
-          name="city"
-          value={city}
-          className="form-control"
-          placeholder="Add city"
+          id="image"
+          name="image"
+          className="form-control mb-3"
+          placeholder="Add photo.."
+          type="file"
+          accept="image/*"
+        />
+
+        <h5>Social media</h5>
+
+        <input
+          id="facebook"
+          name="facebook"
+          className="form-control mb-3"
+          placeholder="Add facebook link.."
           type="text"
-          onChange={(e) => {
-            setCity(e.target.value);
-          }}
-        />
-
-        <input
-          id="state"
-          name="state"
-          value={state}
-          className="form-control"
-          placeholder="Add state"
-          type="text"
-          onChange={(e) => {
-            setState(e.target.value);
-          }}
-        />
-
-        <input
-          id="zipcode"
-          name="zipcode"
-          value={zipcode}
-          className="form-control"
-          placeholder="Add zipcode"
-          type="text"
-          onChange={(e) => {
-            setZipcode(e.target.value);
-          }}
-        />
-
-        <input
-          id="amount"
-          name="amount"
-          value={amount}
-          className="form-control"
-          placeholder="amount $$"
-          type="number"
-          onChange={(e) => {
-            setAmount(e.target.value);
-          }}
-        />
-
-        <input
-          id="instagram"
-          name="instagram"
-          value={instagram}
-          className="form-control"
-          placeholder="Add instagram"
-          type="text"
-          onChange={(e) => {
-            setInstagram(e.target.value);
-          }}
+          required
+          autoComplete="facebook"
         />
 
         <input
           id="twitter"
           name="twitter"
-          value={twitter}
-          className="form-control"
+          className="form-control mb-3"
           placeholder="Add twitter link.."
           type="text"
-          onChange={(e) => {
-            setTwitter(e.target.value);
-          }}
+          required
+          autoComplete="twitter"
         />
 
         <input
-          id="address"
-          className="form-control"
-          placeholder="Address"
+          id="instagram"
+          name="instagram"
+          className="form-control mb-3"
+          placeholder="Add instagram"
           type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          required
+          autoComplete="instagram"
         />
 
-        <input placeholder="subimit" type="submit" />
+        <h5>Location</h5>
+
+        <input
+          id="address"
+          name="address"
+          className="form-control mb-3"
+          placeholder="Address"
+          type="text"
+          required
+          autoComplete="address"
+        />
+
+        <input
+          id="city"
+          name="city"
+          className="form-control mb-3"
+          placeholder="Add city"
+          type="text"
+          required
+          autoComplete="city"
+        />
+
+        <input
+          id="state"
+          name="state"
+          className="form-control mb-3"
+          placeholder="Add state"
+          type="text"
+          required
+          autoComplete="state"
+        />
+
+        <input
+          id="zip_code"
+          name="zip_code"
+          className="form-control mb-3"
+          placeholder="Add zipcode"
+          type="number"
+          required
+        />
+
+        <h5>payment</h5>
+
+        <input
+          id="consultation_fee"
+          name="consultation_fee"
+          className="form-control mb-3"
+          placeholder="amount $$"
+          type="number"
+          required
+        />
+
+        <button type="submit" className="btn btn-primary">Create doctor</button>
 
       </form>
     </div>

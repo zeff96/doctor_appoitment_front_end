@@ -1,13 +1,13 @@
 import { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { passwordResetAsync } from '../../redux/users/userSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 
 const PasswordForm = () => {
   const formRef = useRef();
 
-  const passwordError = useSelector((state) => state.user.passwordResetError);
+  const passwordError = useAppSelector((state) => state.user.passwordResetError);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();

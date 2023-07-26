@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { signUpAsync } from '../redux/users/userSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 function RegistrationForm() {
-  const authError = useSelector((state) => state.user.signError);
+  const authError = useAppSelector((state) => state.user.signError);
   const [error, setError] = useState('');
   const [mismatch, setMismatch] = useState(' ');
   const formRef = useRef();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const MINIMUM_PASSWORD_LENGTH = 6;
 
   const implementform = (e) => {
