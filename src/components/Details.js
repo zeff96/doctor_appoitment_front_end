@@ -15,11 +15,10 @@ const Details = () => {
   return (
     <div className="row d-flex align-items-center">
       <div className="col-7 d-flex justify-content-center align-items-center vh-100">
-        <img src={doctor.image_url} alt={doctor.name} className="img-fluid img-thumbnail text-align-center" width="300px" height="200px" />
+        <img src={doctor.image} alt={doctor.name} className="img-fluid img-thumbnail text-align-center" width="300px" height="200px" />
       </div>
       <div className="col-5 d-flex flex-column justify-content-start align-items-start mt-5 mb-auto">
         <h2 className="mt-5">{doctor.name}</h2>
-        <p>{doctor.bio}</p>
         {doctor && doctor.location && doctor.payment && (
           <table className="table table-striped">
             <tbody>
@@ -50,7 +49,7 @@ const Details = () => {
           className="btn btn-info btn-appointment rounded-pill text-light h3"
           type="button"
           onClick={() => {
-            navigate('new_appointment');
+            navigate('/doctors/new_appointment');
           }}
         >
           appointment
