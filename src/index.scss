@@ -123,35 +123,29 @@ $info : #5fb523;
   border: none;
   color: #fff;
 }
-/* Add these styles to your CSS or use a style object in your React component */
 
-/* Style for the first column when the navbar is open */
 .col-navbar.open {
   width: 33.333333%;
-  max-width: 400px; /* Optional: Set a maximum width for the open column */
+  max-width: 400px;
 }
 
-/* Style for the first column when the navbar is closed */
 .col-navbar.closed {
   width: 0;
   overflow: hidden;
 }
 
-/* Style for the button inside the Navbar */
 .navbar-button {
   align-items: end;
 }
 
-/* Style for the second column when the navbar is open */
 .col-outlet-open {
   height: 100vh;
   width: 66.666667%;
-  transition: all 0.3s ease; /* Add a smooth transition effect */
+  transition: all 0.3s ease;
 }
 
-/* Style for the second column when the navbar is closed */
 .col-outlet-closed {
   height: 100vh;
   width: 100%;
-  transition: all 0.3s ease; /* Add a smooth transition effect */
+  transition: all 0.3s ease;
 }
