@@ -16,6 +16,7 @@ const handlers = [
     ]),
   )),
   rest.get('https://doctor-api-3dvk.onrender.com/doctors/:id', (req, res, ctx) => res(ctx.status(200), ctx.json({ id: 1, name: 'doc1', bio: 'doc from kenya' }))),
+
   rest.post('https://doctor-api-3dvk.onrender.com/doctors', (req, res, ctx) => {
     const { name, bio, image } = req.body;
     return (
@@ -55,7 +56,7 @@ describe('Doctors Details components', () => {
     renderWithproviders(
       <Details />,
     );
-    expect(await screen.findByText(/doc from kenya/i)).toBeInTheDocument();
+    expect(await screen.findByText(/doc1/i)).toBeInTheDocument();
   });
 });
 describe('Doctors POST endpoint', () => {
