@@ -16,8 +16,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="z-3 row side-bar">
-      <nav className="navbar navbar-expand bg-light col collapse collapse-horizontal flex-column" id="collapseElement">
+    <div className="h-100 row side-bar">
+      <nav className="navbar navbar-expand bg-light col flex-column" id="collapseElement">
         <div className="collapse-header mb-5">
           <h5 className="collapse-title h3 my-5">Doctor Appointment</h5>
         </div>
