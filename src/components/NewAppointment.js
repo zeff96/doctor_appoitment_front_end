@@ -6,8 +6,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 function NewAppointment() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // const userData = useAppSelector((state) => state.user.userData);
-  // const user = JSON.parse(userData.user);
   const doctors = useAppSelector((state) => state.doctors.doctors);
   const [selectedDoctorId, setSelectedDoctorId] = useState('');
   const formRef = useRef();

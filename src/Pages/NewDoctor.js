@@ -145,7 +145,7 @@ function NewDoctor() {
           required
         />
 
-        <h5>payment</h5>
+        <h5>Payment</h5>
 
         <input
           id="consultation_fee"
