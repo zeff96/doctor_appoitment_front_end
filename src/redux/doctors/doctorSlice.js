@@ -33,7 +33,6 @@ export const fechDoctors = createAsyncThunk('doctors/fechDoctors', async () => {
       Accept: 'application/json',
       Authorization: Cookies.get('jwt_token'),
     },
-    withCredentials: true,
   });
   return response.data;
 });
@@ -46,7 +45,6 @@ export const showDoctors = createAsyncThunk('doctors/showDoctors', async (id) =>
       Accept: 'application/json',
       Authorization: Cookies.get('jwt_token'),
     },
-    withCredentials: true,
   });
   return response.data;
 });
@@ -58,7 +56,6 @@ export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (id) =
       Accept: 'application/json',
       Authorization: Cookies.get('jwt_token'),
     },
-    withCredentials: true,
   });
   return res.data;
 });
@@ -70,7 +67,6 @@ export const createAppointment = createAsyncThunk('doctors/createAppointment', a
       Accept: 'application/json',
       Authorization: Cookies.get('jwt_token'),
     },
-    withCredentials: true,
   });
   return response.data;
 });
@@ -82,7 +78,6 @@ export const fetchAppointments = createAsyncThunk('doctors/fetchAppointments', a
       Accept: 'application/json',
       Authorization: Cookies.get('jwt_token'),
     },
-    withCredentials: true,
   });
   return response.data;
 });

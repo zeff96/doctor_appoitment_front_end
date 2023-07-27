@@ -12,7 +12,7 @@ const initialState = {
   passwordResetNewError: null,
 };
 
-const url = ' https://doctor-api-3dvk.onrender.com';
+const url = 'https://doctor-api-3dvk.onrender.com';
 
 export const signUpAsync = createAsyncThunk(
   'signup/Async',
@@ -46,7 +46,6 @@ export const loginAsync = createAsyncThunk(
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        withCredentials: true,
       });
       const token = res.headers.get('Authorization');
       const userInfo = res.data.user;
@@ -71,7 +70,6 @@ export const logoutAsync = createAsyncThunk(
         'Content-Type': 'application/json',
         Authorization: Cookies.get('jwt_token'),
       },
-      withCredentials: true,
     });
     Cookies.remove('jwt_token');
     Cookies.remove('user_info');
@@ -88,7 +86,6 @@ export const passwordResetAsync = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       });
-
       return res.data;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
@@ -109,7 +106,6 @@ export const passwordResetNewAsync = createAsyncThunk(
           'Content-Type': 'application/json',
         },
       });
-
       return res.data;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
