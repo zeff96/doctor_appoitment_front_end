@@ -16,7 +16,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="row side-bar">
+    <div className="z-3 row side-bar">
       <nav className="navbar navbar-expand bg-light col collapse collapse-horizontal flex-column" id="collapseElement">
         <div className="collapse-header mb-5">
           <h5 className="collapse-title h3 my-5">Doctor Appointment</h5>
@@ -35,7 +35,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <ul className="d-flex mt-auto">
+        <ul className="d-flex mt-auto flex-wrap">
           <a href="https://www.twitter.com" aria-label="Twitter"><i className="bi bi-twitter p-1 mx-2 h5" /></a>
           <a href="https://www.facebook.com" aria-label="Facebook"><i className="bi bi-facebook p-1 mx-2 h5" /></a>
           <a href="https://www.google.com" aria-label="Facebook"><i className="bi bi-google p-1 text-success mx-2 h5" /></a>
