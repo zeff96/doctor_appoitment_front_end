@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 import { fechDoctors } from '../redux/doctors/doctorSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 const Doctors = () => {
   const doctors = useAppSelector((state) => state.doctors.doctors);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const sliderRef = useRef(null);
   useEffect(() => {
     dispatch(fechDoctors());
@@ -72,7 +73,14 @@ const Doctors = () => {
           <Slider ref={sliderRef} {...settings}>
             {doctors.map((doctor) => (
               <div key={doctor.id} className="doctors-list">
-                <Link to={`doctor/${doctor.id}`} className="details-link">
+                <button
+                  className="details-link"
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/${doctor.id}`);
+                  }}
+                >
                   <div className="doctor-card">
                     <div
                       className="circle-color"
@@ -104,7 +112,7 @@ const Doctors = () => {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </button>
               </div>
             ))}
           </Slider>
