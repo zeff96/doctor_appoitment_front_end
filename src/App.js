@@ -16,7 +16,7 @@ import NewPasswordForm from './authentication/passwords/newPassword';
 import NewDoctor from './Pages/NewDoctor';
 import DeleteDoctor from './components/delete';
 
-function App() {
+const App = () => {
   const token = Cookies.get('jwt_token');
   const userData = Cookies.get('user_info');
   const dispatch = useDispatch();
@@ -47,5 +47,5 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 export default App;

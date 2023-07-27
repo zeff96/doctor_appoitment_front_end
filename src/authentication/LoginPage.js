@@ -5,13 +5,13 @@ import RegistrationForm from './RegistrationForm';
 import PasswordForm from './passwords/forgotPassword';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
-function LoginPage() {
+const LoginPage = () => {
   const formRef = useRef();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error = useAppSelector((state) => state.user.loginError);
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(formRef.current);
@@ -25,7 +25,7 @@ function LoginPage() {
       navigate('/doctors');
     });
     e.target.reset();
-  }
+  };
 
   return (
     <div className="container mt-5 bg-white card p-4">
@@ -80,6 +80,6 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;

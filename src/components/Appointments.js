@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { fetchAppointments } from '../redux/doctors/doctorSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
-function Appointments() {
+const Appointments = () => {
   const appointments = useAppSelector((state) => state.doctors.appointments);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -26,6 +26,6 @@ function Appointments() {
       </ul>
     </div>
   );
-}
+};
 
 export default Appointments;
