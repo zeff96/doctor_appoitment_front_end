@@ -78,7 +78,7 @@ const Doctors = () => {
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
-                    navigate(`/${doctor.id}`);
+                    navigate(`${doctor.id}`);
                   }}
                 >
                   <div className="doctor-card">
