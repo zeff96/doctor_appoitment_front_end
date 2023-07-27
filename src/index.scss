@@ -139,10 +139,7 @@ $info : #5fb523;
 
 /* Style for the button inside the Navbar */
 .navbar-button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 1rem;
+  align-items: end;
 }
 
 /* Style for the second column when the navbar is open */
@@ -158,5 +155,3 @@ $info : #5fb523;
   width: 100%;
   transition: all 0.3s ease; /* Add a smooth transition effect */
 }
-
-
