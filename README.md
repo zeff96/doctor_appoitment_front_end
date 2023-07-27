@@ -23,19 +23,19 @@
 
 ### Home Page
 
-![screenshot](./)
+![screenshot](![Alt text](<Screenshot from 2023-07-27 04-28-42.png>))
 
 ### Details Page
 
-![screenshot](./)
+![screenshot](./![Alt text](<Screenshot from 2023-07-27 04-30-38.png>))
 
 ### Book Appoinments Page
 
-![screenshot](./)
+![screenshot](./![Alt text](<Screenshot from 2023-07-27 04-31-36.png>))
 
 ### Appointments Page
 
-![screenshot](./)
+![screenshot](./![Alt text](<Screenshot from 2023-07-27 04-31-36-1.png>))
 
 ## Built With
 
@@ -50,7 +50,7 @@
 
 ## Live version
 
-[Book-Appoinments](https://///)
+[Book-Appoinments](https://doctor-appointment-cx5g.onrender.com)
 
 ## Getting Started
 
