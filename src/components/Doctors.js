@@ -74,7 +74,7 @@ const Doctors = () => {
             {doctors.map((doctor) => (
               <div key={doctor.id} className="doctors-list">
                 <button
-                  className="details-link"
+                  className="card border border-white details-link"
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
