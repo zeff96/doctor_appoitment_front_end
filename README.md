@@ -29,7 +29,7 @@
 
 ![screenshot](<Screenshot from 2023-07-27 04-30-38.png>)
 
-### Book Appoinments Page
+### Book Appointments Page
 
 ![screenshot](<Screenshot from 2023-07-27 04-31-36.png>)
 
