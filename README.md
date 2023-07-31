@@ -23,19 +23,19 @@
 
 ### Home Page
 
-![screenshot](![Alt text](<Screenshot from 2023-07-27 04-28-42.png>))
+![screenshot](<Screenshot from 2023-07-27 04-28-42.png>)
 
 ### Details Page
 
-![screenshot](./![Alt text](<Screenshot from 2023-07-27 04-30-38.png>))
+![screenshot](<Screenshot from 2023-07-27 04-30-38.png>)
 
 ### Book Appoinments Page
 
-![screenshot](./![Alt text](<Screenshot from 2023-07-27 04-31-36.png>))
+![screenshot](<Screenshot from 2023-07-27 04-31-36.png>)
 
 ### Appointments Page
 
-![screenshot](./![Alt text](<Screenshot from 2023-07-27 04-31-36-1.png>))
+![screenshot](<Screenshot from 2023-07-27 04-31-36-1.png>)
 
 ## Built With
 
