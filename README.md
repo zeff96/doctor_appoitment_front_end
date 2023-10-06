@@ -1,7 +1,7 @@
 
-# Doctors Appoinments Frontend
+# Doctors Appointments Frontend
 
-> Doctors Appoinments frontend is react forntend application for doctor book appoinemnts. This applications is responsive and users can load, create, and delete doctors and reservations. Users need to sign up or sign in to access application. They can sign up or sign in using the sign up and login forms.
+> Doctors Appoinments frontend is react frontend application for doctor book appoinemnts. This applications is responsive and users can load, create, and delete doctors and reservations. Users need to sign up or sign in to access application. They can sign up or sign in using the sign up and login forms.
 
 ## Link to the backend
 
