@@ -5,7 +5,7 @@
 
 ## Link to the backend
 
-[Book Appoinments Backend](https://github.com/zeff96/doctor_appointment_back_end)
+[Book Appointments Backend](https://github.com/zeff96/doctor_appointment_back_end)
 
 ## Kanban Board
 [Kanban Board](https://github.com/users/zeff96/projects/9)
